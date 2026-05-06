@@ -15,15 +15,16 @@
     "expected_salary_annual": "$48,000–$72,000 USD per year",
     "notice_period": "Available immediately",
     "notice_period_weeks": "0",
-    "location": "Kerala, India",
+    "location": "Kerala, India (actively relocating to UAE)",
     "country": "India",
     "city": "Kerala",
     "timezone": "IST (UTC+5:30)",
     "work_authorization": "Indian citizen, open to visa sponsorship",
-    "eligible_to_work": "Yes, in India. Open to sponsorship for other countries.",
-    "willing_to_relocate": "No, seeking fully remote position",
-    "remote_preference": "Fully remote",
-    "travel_availability": "Available for occasional travel within India",
+    "eligible_to_work": "Yes, in India. Open to sponsorship for other countries including UAE.",
+    "willing_to_relocate": "Yes — actively targeting UAE relocation. Wife is based in UAE.",
+    "remote_preference": "UAE-based (on-site or hybrid) preferred; fully remote global also open",
+    "travel_availability": "Available for relocation to UAE immediately upon visa processing",
+    "uae_relocation_note": "Strong personal motivation to relocate to UAE. Wife is UAE-based. Require employer visa sponsorship.",
     "linkedin": "https://www.linkedin.com/in/fazilkunhamed",
     "github": "",
     "portfolio": "",
@@ -44,8 +45,8 @@
     },
     "work_type": {
       "remote": "Yes",
-      "hybrid": "Negotiable",
-      "onsite": "No"
+      "hybrid": "Yes — preferred for UAE roles",
+      "onsite": "Yes — for UAE (Abu Dhabi / Dubai)"
     },
     "employment_type": {
       "full_time": "Preferred",
@@ -54,6 +55,7 @@
       "freelance": "Open"
     },
     "visa_sponsorship_needed": "Yes, open to sponsorship",
+    "uae_work_authorization": "No, would need employer visa sponsorship",
     "us_work_authorization": "No, would need sponsorship",
     "uk_work_authorization": "No, would need sponsorship",
     "eu_work_authorization": "No, would need sponsorship"
@@ -62,6 +64,7 @@
     "why_interested": "I'm drawn to companies building meaningful products where deep technical expertise can drive real business outcomes. With 10 years spanning Angular, .NET, and cloud architecture, I focus on roles where I can contribute at both the code and system design level.",
     "biggest_achievement": "Led the migration of a large Angular 14 application to Angular 19 at ADNOC, achieving a 55% bundle size reduction and 33% API performance improvement. Also built Oops AppLock which reached 7.7 million downloads and was featured on LifeHacker.",
     "why_remote": "I've worked effectively in distributed, async-first teams for several years. My productivity and communication improve in remote settings where I can do deep work and contribute across time zones.",
+    "why_uae": "My wife is based in the UAE, so I have strong personal motivation to relocate. I'm actively seeking UAE-based roles and can begin the visa process immediately upon an offer.",
     "salary_expectation_context": "My target range is $4,000–$6,000 USD per month depending on the role scope, responsibilities, and benefits package. I'm open to discussing the full compensation structure.",
     "cover_of_application": "See attached cover letter."
   },

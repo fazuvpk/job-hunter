@@ -7,8 +7,13 @@ You are tailoring Fazil Kunhamed's resume for a specific job application. Your g
 
 ## Candidate's Fixed Resume Data
 
-### Summary (base)
-Senior software developer with 10 years of experience building scalable full-stack applications. Expertise in Angular 14–19, .NET Core, and cloud-native architectures on Azure and AWS. Track record of delivering measurable outcomes: 7.7M app downloads, 55% bundle reduction, $45K revenue in 6 months, 20M+ record PII encryption in 3 minutes.
+### Summary — Two Variants (select based on role location)
+
+**uae_roles** (UAE on-site or hybrid):
+Senior software developer with 10 years of experience building scalable full-stack applications. Expertise in Angular 14–19, .NET Core, and cloud-native architectures on Azure and AWS. Track record of delivering measurable outcomes: 7.7M app downloads, 55% bundle reduction, $45K revenue in 6 months, 20M+ record PII encryption in 3 minutes. Currently based in Kerala, India and actively relocating to UAE — wife is UAE-based. Requires visa sponsorship.
+
+**remote_roles** (fully remote, global):
+Senior software developer with 10 years of experience building scalable full-stack applications. Expertise in Angular 14–19, .NET Core, and cloud-native architectures on Azure and AWS. Track record of delivering measurable outcomes: 7.7M app downloads, 55% bundle reduction, $45K revenue in 6 months, 20M+ record PII encryption in 3 minutes. Kerala, India. Fully remote, global.
 
 ### Core Tech Skills
 Angular 14-19 | .NET Core | ASP.NET Web API | Entity Framework Core | TypeScript | RxJS | Node.js | SQL Server | Azure (App Services, Event Grid, Web Jobs, Storage) | AWS (S3, SES, Kinesis) | CQRS | Clean Architecture | Microservices | SignalR | React | Vue | Android (Kotlin/Java) | Three.js | GSAP | Docker | CI/CD
@@ -98,6 +103,13 @@ Angular 14-19 | .NET Core | ASP.NET Web API | Entity Framework Core | TypeScript
 3. Position as technical lead who builds with AI tools
 4. Keywords: LLM, AI integration, automation, n8n, workflow, Claude
 
+### For UAE On-Site / Hybrid Roles
+1. Use the **uae_roles** summary variant — include relocation statement and visa sponsorship note
+2. Lead with ADNOC (UAE enterprise client — highest contextual relevance for UAE hiring managers)
+3. Emphasize Samsung SDS enterprise credentials (scale, compliance, commercial impact)
+4. Add a brief relocation note in the summary: "Actively relocating to UAE — wife is UAE-based. Requires employer visa sponsorship."
+5. Keywords: enterprise, UAE, relocation, Angular, .NET, Azure
+
 ---
 
 ## Summary Rewriting Rules
@@ -106,7 +118,8 @@ The summary should:
 1. Open with the most relevant seniority + skill from JD (e.g., "Senior Angular developer..." or "Senior .NET engineer...")
 2. Include 1–2 specific metrics from the most relevant project
 3. End with the value prop most aligned to JD's stated goals (performance, scale, delivery speed, etc.)
-4. Be 3–4 sentences max, no filler words
+4. For UAE roles: append the relocation statement — "Currently based in Kerala, India and actively relocating to UAE — wife is UAE-based. Requires visa sponsorship."
+5. Be 3–4 sentences max, no filler words
 
 ---
 
@@ -116,8 +129,9 @@ Return a JSON object with this exact structure:
 
 ```json
 {
+  "role_location_type": "uae_onsite",
   "tailored_summary": "Senior Angular developer with 10 years of full-stack experience...",
-  "skills_reordered": ["Angular 14-19", "TypeScript", "RxJS", ...],
+  "skills_reordered": ["Angular 14-19", "TypeScript", "RxJS", "..."],
   "experience_sections": [
     {
       "company": "ADNOC",
@@ -135,8 +149,9 @@ Return a JSON object with this exact structure:
   ],
   "jd_keywords_matched": ["Angular 19", "standalone components", "performance optimization"],
   "jd_keywords_missing": ["NgRx", "SSR"],
-  "tailoring_notes": "Prioritized ADNOC for Angular 19 match. Moved Three.js bullet to skills as JD mentions data visualization.",
+  "tailoring_notes": "Prioritized ADNOC for UAE client relevance and Angular 19 match. Used uae_roles summary variant with relocation statement.",
   "role_type_detected": "angular_frontend",
+  "role_location_type_detected": "uae_onsite",
   "confidence_score": 0.88
 }
 ```
@@ -150,3 +165,4 @@ Return a JSON object with this exact structure:
 - Do not remove: any company from experience (only reorder bullets within companies)
 - Do not lie about: Angular version range, years of experience, availability
 - If JD requires a skill Fazil lacks: note it in `jd_keywords_missing`, do not add it to resume
+- For UAE roles: always use the uae_roles summary variant — never omit the relocation and visa statement

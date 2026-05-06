@@ -19,7 +19,7 @@ You are writing a cover letter for Fazil Kunhamed, a senior software developer w
 - `job_title`: The role title
 - `company_name`: The company name
 - `job_description`: Full job description text
-- `role_type`: One of: angular_frontend, dotnet_backend, full_stack, mobile, enterprise, startup
+- `role_type`: One of: angular_frontend, dotnet_backend, full_stack, mobile, enterprise, startup, uae_onsite
 - `tailored_resume_summary`: The summary from the tailored resume for this job
 
 ---
@@ -41,7 +41,13 @@ You are writing a cover letter for Fazil Kunhamed, a senior software developer w
 ## Structure
 
 ### Paragraph 1: The Hook (3–4 sentences)
-- Open with a specific connection between one of Fazil's most relevant projects and a problem the company is clearly trying to solve
+
+**For `uae_onsite` roles (UAE on-site / hybrid):** Lead with the personal UAE connection before pivoting to technical fit.
+- Open with: Fazil is actively relocating to UAE — wife is already UAE-based, strong personal motivation, can begin immediately upon visa processing.
+- Then pivot to the most relevant technical project for their JD.
+- Example hook: "I'm actively relocating to the UAE — my wife is already based there, and I have every personal reason to make this move quickly. I require employer visa sponsorship, and I'm ready to start the process as soon as an offer is in place. When [Company] was looking for someone who could [solve their specific problem], my work at [relevant project]..."
+
+**For all other role types:** Open with a specific connection between one of Fazil's most relevant projects and a problem the company is clearly trying to solve.
 - Reference the company by name and what they're building
 - Do not summarize Fazil's career — get straight to the point of relevance
 - Examples by role type:
@@ -59,9 +65,16 @@ You are writing a cover letter for Fazil Kunhamed, a senior software developer w
 - Do not repeat what's already on the resume — add context and business impact
 
 ### Paragraph 3: Fit + Call to Action (2–3 sentences)
-- State remote availability and immediate start
+
+**For `uae_onsite` roles:** Acknowledge relocation readiness, visa sponsorship requirement, and personal connection to UAE.
+- State that relocation to UAE is the active goal, wife is UAE-based, and visa sponsorship is required
 - Reference why this specific company/role is a fit (use something specific from their JD or about pages)
-- Close with a clear next step: "I'd welcome a conversation to discuss how I can contribute."
+- Close with a clear next step: "I'd welcome a conversation to discuss how I can contribute — and to outline a realistic visa timeline."
+
+**For remote roles:** Keep existing structure.
+- State remote availability and immediate start
+- Reference why this specific company/role is a fit
+- Close: "I'd welcome a conversation to discuss how I can contribute."
 
 ---
 
@@ -77,6 +90,7 @@ Choose achievements based on `role_type`:
 | mobile | Oops AppLock (7.7M downloads, LifeHacker feature) | Samsung SDS for enterprise credibility |
 | enterprise | Samsung SDS ($45K revenue, 20% cost reduction) | ADNOC for large-scale migration |
 | startup | Oops AppLock (7.7M downloads, scrappy indie success) | Skill Tenet (modern stack, rapid build) |
+| uae_onsite | ADNOC (UAE enterprise client — direct relevance) | Samsung SDS for enterprise credibility |
 
 ---
 
@@ -87,6 +101,7 @@ Scan the job description for:
 - Business outcomes they care about (e.g., "performance", "scalability") → reference matching achievement
 - Team/culture signals (e.g., "async", "remote-first") → acknowledge briefly
 - Technical challenges (e.g., "legacy migration", "high-traffic") → reference matching experience
+- UAE-specific signals (e.g., "visa sponsorship provided", "relocation package") → acknowledge and confirm readiness
 
 ---
 
@@ -104,13 +119,24 @@ METADATA
   "achievements_used": ["ADNOC migration", "Samsung SDS PII"],
   "jd_keywords_used": ["Angular 19", "performance optimization", "remote-first"],
   "tone": "confident",
-  "hook_type": "problem_connection"
+  "hook_type": "uae_personal_connection",
+  "role_type": "uae_onsite"
 }
 ```
 
 ---
 
-## Example Output (for reference — do not copy verbatim)
+## Example Output — UAE On-Site Role (for reference — do not copy verbatim)
+
+I'm actively relocating to the UAE — my wife is already based there, and I have every personal reason to make this move as quickly as possible. I require employer visa sponsorship, and I'm ready to begin that process immediately upon an offer. When Acme UAE needed to modernize their Angular frontend while keeping a live enterprise user base intact, that's precisely the problem I solved at ADNOC: a full Angular 14 to 19 migration delivering a 55% bundle size reduction and 33% API performance improvement.
+
+At Samsung SDS, I delivered $45,000 in new revenue within 6 months while simultaneously reducing cloud infrastructure costs by 20% — the kind of dual outcome that requires both technical depth and commercial awareness. The PII encryption pipeline I built there processed 20 million+ records in under 3 minutes using Azure Service Bus and parallel processing. Earlier, building Oops AppLock from scratch to 7.7 million downloads taught me how code-level performance decisions translate directly into user retention at scale.
+
+The Senior Full Stack Developer role at Acme UAE aligns directly with the scale of work I'm targeting next. I'd welcome a conversation about how I can contribute — and to walk through a realistic visa and onboarding timeline.
+
+---
+
+## Example Output — Remote Role (for reference — do not copy verbatim)
 
 When [Company Name] decided to modernize their Angular frontend, the challenge wasn't just upgrading versions — it was doing it without disrupting an active user base or bloating the bundle further. At ADNOC, I led exactly that migration: Angular 14 to 19, resulting in a 55% bundle size reduction and a 33% improvement in API response times across a complex enterprise codebase.
 

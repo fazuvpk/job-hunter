@@ -9,6 +9,7 @@
       "timezone": "Asia/Kolkata",
       "utc_offset": "+05:30"
     },
+    "target_location": "UAE (Abu Dhabi / Dubai preferred)",
     "linkedin": "https://www.linkedin.com/in/fazilkunhamed"
   },
   "career": {
@@ -35,14 +36,15 @@
     "prefer_not_to_disclose_current": true
   },
   "work_preferences": {
-    "remote": "fully_remote",
+    "remote": "hybrid_or_onsite_uae_or_remote_global",
     "global": true,
+    "preferred_locations": ["Abu Dhabi", "Dubai", "UAE", "Remote (Global)"],
     "travel": {
       "domestic_india": "weekly_ok",
-      "international": "depends_on_offer",
-      "avoid_countries": ["UAE", "United Arab Emirates"]
+      "international": "preferred_for_uae"
     },
-    "relocation": false,
+    "relocation": true,
+    "relocation_note": "Actively targeting UAE relocation. Wife is based in UAE. Open to visa sponsorship.",
     "preferred_contract_types": ["full_time", "contract", "consulting"]
   },
   "authorization": {
@@ -50,7 +52,7 @@
     "work_authorization_india": true,
     "open_to_visa_sponsorship": true,
     "eligible_countries_without_sponsorship": ["India"],
-    "restricted_countries": ["UAE"]
+    "uae_visa_note": "Requires employer visa sponsorship for UAE. Wife already in UAE — strong personal motivation to relocate."
   },
   "tech_stack": {
     "backend": [
@@ -173,8 +175,8 @@
     }
   ],
   "company_preferences": {
-    "ideal": ["product_startup", "series_a_to_c", "tech_company", "saas", "fintech", "ai_company"],
+    "ideal": ["product_startup", "series_a_to_c", "tech_company", "saas", "fintech", "ai_company", "uae_tech_company"],
     "acceptable": ["enterprise_product", "consulting_with_products"],
-    "avoid": ["body_shopping_agency", "pure_staff_augmentation", "uae_based", "outdated_tech_only"]
+    "avoid": ["body_shopping_agency", "pure_staff_augmentation", "outdated_tech_only"]
   }
 }

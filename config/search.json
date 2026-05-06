@@ -9,7 +9,9 @@
     "Senior Software Engineer",
     ".NET Solutions Architect"
   ],
-  "remote_only": true,
+  "remote_only": false,
+  "preferred_locations": ["Abu Dhabi", "Dubai", "UAE", "Remote"],
+  "location_passes": ["Abu Dhabi UAE", "Dubai UAE", "Remote"],
   "salary_min_usd_month": 4000,
   "results_per_title": 25,
   "sites": [
@@ -36,15 +38,16 @@
     "remote",
     "async",
     "Senior",
-    "Lead"
+    "Lead",
+    "UAE",
+    "Abu Dhabi",
+    "Dubai",
+    "visa sponsorship",
+    "relocation support"
   ],
   "keywords_exclude": [
-    "UAE",
-    "Dubai",
-    "Abu Dhabi",
     "on-site only",
     "onsite only",
-    "relocation required",
     "US citizens only",
     "clearance required",
     "security clearance"

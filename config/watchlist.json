@@ -9,6 +9,47 @@
       "alert_always": true
     }
   ],
+  "uae_company_categories": [
+    {
+      "category": "UAE Tech Companies",
+      "description": "Senior full-stack and angular/dotnet roles in Abu Dhabi and Dubai",
+      "search_terms": [
+        "senior full stack angular dotnet abu dhabi",
+        "senior developer dubai angular",
+        "senior software engineer abu dhabi dotnet"
+      ],
+      "priority": "highest"
+    },
+    {
+      "category": "UAE Fintech",
+      "description": "Fintech companies based in UAE hiring senior engineers",
+      "search_terms": [
+        "senior engineer fintech dubai",
+        "full stack developer fintech abu dhabi",
+        "senior dotnet engineer fintech uae"
+      ],
+      "priority": "highest"
+    },
+    {
+      "category": "UAE AI Companies",
+      "description": "AI and automation companies in UAE hiring senior engineers",
+      "search_terms": [
+        "senior engineer ai company dubai",
+        "full stack developer ai startup abu dhabi",
+        "senior software engineer llm platform uae"
+      ],
+      "priority": "high"
+    },
+    {
+      "category": "UAE Enterprise Tech",
+      "description": "Large enterprises and government-adjacent tech companies in UAE",
+      "search_terms": [
+        "senior angular developer enterprise dubai",
+        "senior dotnet developer enterprise abu dhabi"
+      ],
+      "priority": "high"
+    }
+  ],
   "startup_categories": [
     {
       "category": "Fintech Startups",

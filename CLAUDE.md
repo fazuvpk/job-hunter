@@ -5,13 +5,13 @@
 **Name:** Fazil Kunhamed  
 **Email:** fazil.kunhamed@gmail.com  
 **Phone:** +917356634634  
-**Location:** Kerala, India  
+**Location:** Kerala, India (actively targeting UAE relocation — wife is UAE-based)  
 **LinkedIn:** https://www.linkedin.com/in/fazilkunhamed  
 **Years of Experience:** 10  
 **Availability:** Immediate  
-**Work Authorization:** Indian citizen, open to visa sponsorship  
-**Travel:** Weekly within India OK; abroad depends on offer; **avoid UAE**  
-**Remote:** Fully remote, global preferred  
+**Work Authorization:** Indian citizen, requires employer visa sponsorship for UAE  
+**Travel:** Weekly within India OK; UAE international travel preferred for relocation  
+**Work Preference:** UAE on-site/hybrid (Abu Dhabi/Dubai) = top preference | Fully remote global = strong second preference  
 **Salary Floor:** $4,000 USD/month minimum (target $4,000–$6,000/month)
 
 ### Tech Stack
@@ -34,8 +34,9 @@
 
 ### Blacklist
 - Pure body-shopping / staff augmentation agencies
-- UAE-relocation required roles
 - Roles below $4,000/month
+
+> **UAE is NO LONGER blacklisted.** UAE (Abu Dhabi, Dubai, Sharjah) is the #1 location target. Fazil's wife is UAE-based. Do not penalize or skip UAE roles.
 
 ---
 
@@ -47,11 +48,14 @@
 
 **Steps:**
 1. Read `config/search.json` for search parameters
-2. For each title in `titles` array, call JobSpy MCP with:
-   - `site_name`: all sites from `sites` array
-   - `search_term`: current title
-   - `results_wanted`: `results_per_title`
-   - `is_remote`: true
+2. For each title in `titles` array, run **three location passes**:
+   - Pass 1: `location = "Abu Dhabi UAE"`, `is_remote`: false
+   - Pass 2: `location = "Dubai UAE"`, `is_remote`: false
+   - Pass 3: `location = "Remote"`, `is_remote`: true
+   - For each pass, call JobSpy MCP with:
+     - `site_name`: all sites from `sites` array
+     - `search_term`: current title
+     - `results_wanted`: `results_per_title`
 3. For each job returned:
    - Check `data/jobs.db` for duplicate `external_id` — skip if exists
    - Check `config/blacklist.json` patterns against title + company + description
@@ -210,6 +214,11 @@ TOP PENDING (ready to review)
 - Flag any AXI role scoring >= 50 as high priority (score override note in `notes`)
 - Display AXI results prominently regardless of score
 
+**UAE company checks:**
+- After AXI, run UAE-specific searches from `config/watchlist.json` `uae_company_categories`
+- Any UAE role scoring >= 50 should be surfaced for review (override the normal 60 threshold)
+- Display UAE results with a "UAE PRIORITY" label
+
 **MCP Tools Used:** `playwright`, `sqlite`
 
 ---
@@ -236,23 +245,24 @@ TOP PENDING (ready to review)
 
 See `prompts/scorer.md` for the full prompt. Dimensions:
 
-| Dimension | Max Points |
-|-----------|-----------|
-| Role match | 20 |
-| Tech stack overlap | 20 |
-| Remote compatibility | 15 |
-| Seniority alignment | 10 |
-| Salary signal | 10 |
-| Company quality | 10 |
-| Growth opportunity | 5 |
-| Application complexity | 5 |
-| Timezone fit | 3 |
-| Visa clarity | 2 |
-| **Total** | **100** |
+| Dimension | Max Points | Note |
+|-----------|-----------|------|
+| Role match | 20 | |
+| Tech stack overlap | 20 | |
+| Location fit | 15 | UAE on-site = 15, fully remote = 15, hybrid non-UAE = 5 |
+| Seniority alignment | 10 | |
+| Salary signal | 10 | |
+| Company quality | 10 | |
+| Growth opportunity | 5 | |
+| Application complexity | 5 | |
+| Timezone fit | 3 | Gulf timezone = 3 |
+| Visa clarity | 2 | |
+| **Total** | **100** | |
 
 - **>= 80:** Auto-recommend APPLY
 - **60–79:** REVIEW (show to Fazil)
-- **35–59:** Flag as borderline SKIP
+- **50–59 (UAE roles only):** REVIEW override — surface despite borderline score
+- **35–59:** Flag as borderline SKIP (non-UAE)
 - **< 35:** Auto-skip, never show
 
 ---
@@ -261,7 +271,7 @@ See `prompts/scorer.md` for the full prompt. Dimensions:
 
 ### JobSpy MCP (`jobspy`)
 - Use for initial job discovery across LinkedIn, Indeed, Glassdoor, ZipRecruiter, Google Jobs
-- Always pass `is_remote: true`
+- Run three location passes per title: "Abu Dhabi UAE", "Dubai UAE", and "Remote" (see `/job-hunter:discover`)
 - Deduplicate by `job_url` before inserting
 
 ### Playwright MCP (`playwright`)
