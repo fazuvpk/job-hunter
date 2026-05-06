@@ -1,0 +1,90 @@
+{
+  "standard_answers": {
+    "years_dotnet": "10",
+    "years_dotnet_core": "8",
+    "years_angular": "7",
+    "years_typescript": "7",
+    "years_react": "4",
+    "years_nodejs": "5",
+    "years_sql": "10",
+    "years_azure": "5",
+    "years_aws": "4",
+    "total_experience": "10",
+    "current_salary": "Prefer not to disclose",
+    "expected_salary": "$4,000–$6,000 per month USD",
+    "expected_salary_annual": "$48,000–$72,000 USD per year",
+    "notice_period": "Available immediately",
+    "notice_period_weeks": "0",
+    "location": "Kerala, India",
+    "country": "India",
+    "city": "Kerala",
+    "timezone": "IST (UTC+5:30)",
+    "work_authorization": "Indian citizen, open to visa sponsorship",
+    "eligible_to_work": "Yes, in India. Open to sponsorship for other countries.",
+    "willing_to_relocate": "No, seeking fully remote position",
+    "remote_preference": "Fully remote",
+    "travel_availability": "Available for occasional travel within India",
+    "linkedin": "https://www.linkedin.com/in/fazilkunhamed",
+    "github": "",
+    "portfolio": "",
+    "phone": "+917356634634",
+    "email": "fazil.kunhamed@gmail.com",
+    "full_name": "Fazil Kunhamed",
+    "first_name": "Fazil",
+    "last_name": "Kunhamed"
+  },
+  "dropdown_mappings": {
+    "experience_level": {
+      "entry": null,
+      "junior": null,
+      "mid": "5-7 years",
+      "senior": "10+ years",
+      "lead": "10+ years",
+      "principal": "10+ years"
+    },
+    "work_type": {
+      "remote": "Yes",
+      "hybrid": "Negotiable",
+      "onsite": "No"
+    },
+    "employment_type": {
+      "full_time": "Preferred",
+      "part_time": "No",
+      "contract": "Open",
+      "freelance": "Open"
+    },
+    "visa_sponsorship_needed": "Yes, open to sponsorship",
+    "us_work_authorization": "No, would need sponsorship",
+    "uk_work_authorization": "No, would need sponsorship",
+    "eu_work_authorization": "No, would need sponsorship"
+  },
+  "essay_answers": {
+    "why_interested": "I'm drawn to companies building meaningful products where deep technical expertise can drive real business outcomes. With 10 years spanning Angular, .NET, and cloud architecture, I focus on roles where I can contribute at both the code and system design level.",
+    "biggest_achievement": "Led the migration of a large Angular 14 application to Angular 19 at ADNOC, achieving a 55% bundle size reduction and 33% API performance improvement. Also built Oops AppLock which reached 7.7 million downloads and was featured on LifeHacker.",
+    "why_remote": "I've worked effectively in distributed, async-first teams for several years. My productivity and communication improve in remote settings where I can do deep work and contribute across time zones.",
+    "salary_expectation_context": "My target range is $4,000–$6,000 USD per month depending on the role scope, responsibilities, and benefits package. I'm open to discussing the full compensation structure.",
+    "cover_of_application": "See attached cover letter."
+  },
+  "ats_platform_hints": {
+    "greenhouse": {
+      "resume_field": "resume",
+      "cover_letter_field": "cover_letter",
+      "submit_button": "Submit Application"
+    },
+    "lever": {
+      "resume_field": "resume",
+      "cover_letter_field": "comments",
+      "submit_button": "Submit Application"
+    },
+    "workday": {
+      "resume_field": "file",
+      "cover_letter_field": "coverLetter",
+      "submit_button": "Submit"
+    },
+    "linkedin_easy_apply": {
+      "uses_linkedin_profile": true,
+      "cover_letter_field": "coverLetter",
+      "submit_button": "Submit application"
+    }
+  }
+}

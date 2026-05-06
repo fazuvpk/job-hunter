@@ -1,0 +1,180 @@
+{
+  "personal": {
+    "name": "Fazil Kunhamed",
+    "email": "fazil.kunhamed@gmail.com",
+    "phone": "+917356634634",
+    "location": {
+      "city": "Kerala",
+      "country": "India",
+      "timezone": "Asia/Kolkata",
+      "utc_offset": "+05:30"
+    },
+    "linkedin": "https://www.linkedin.com/in/fazilkunhamed"
+  },
+  "career": {
+    "years_of_experience": 10,
+    "availability": "immediate",
+    "notice_period_days": 0,
+    "current_status": "Available",
+    "target_roles": [
+      "Senior Full Stack Developer",
+      "Angular Frontend Developer",
+      "Senior .NET Developer",
+      "Lead Full Stack Engineer",
+      "Solutions Architect"
+    ],
+    "seniority_level": "Senior"
+  },
+  "compensation": {
+    "salary_floor_usd_month": 4000,
+    "salary_target_usd_month": 5000,
+    "salary_ceiling_usd_month": 6000,
+    "currency_preference": "USD",
+    "negotiable": true,
+    "equity_interest": true,
+    "prefer_not_to_disclose_current": true
+  },
+  "work_preferences": {
+    "remote": "fully_remote",
+    "global": true,
+    "travel": {
+      "domestic_india": "weekly_ok",
+      "international": "depends_on_offer",
+      "avoid_countries": ["UAE", "United Arab Emirates"]
+    },
+    "relocation": false,
+    "preferred_contract_types": ["full_time", "contract", "consulting"]
+  },
+  "authorization": {
+    "citizenship": "Indian",
+    "work_authorization_india": true,
+    "open_to_visa_sponsorship": true,
+    "eligible_countries_without_sponsorship": ["India"],
+    "restricted_countries": ["UAE"]
+  },
+  "tech_stack": {
+    "backend": [
+      ".NET Core",
+      "ASP.NET MVC",
+      "ASP.NET Web API",
+      "Entity Framework",
+      "Entity Framework Core",
+      "Node.js",
+      "SQL Server",
+      "PostgreSQL",
+      "Redis"
+    ],
+    "frontend": [
+      "Angular 14",
+      "Angular 15",
+      "Angular 16",
+      "Angular 17",
+      "Angular 18",
+      "Angular 19",
+      "React",
+      "Vue",
+      "TypeScript",
+      "RxJS",
+      "JavaScript",
+      "ES2022",
+      "HTML5",
+      "CSS3",
+      "SCSS",
+      "GSAP",
+      "Three.js"
+    ],
+    "mobile": [
+      "Android",
+      "Kotlin",
+      "Java"
+    ],
+    "ai_automation": [
+      "Claude Code",
+      "OpenAI API",
+      "n8n",
+      "LangChain"
+    ],
+    "cloud": {
+      "aws": ["SES", "S3", "Kinesis", "Lambda", "EC2", "RDS"],
+      "azure": ["App Services", "Web Jobs", "Storage", "Event Grid", "Azure Functions", "Azure DevOps"]
+    },
+    "architecture": [
+      "Clean Architecture",
+      "CQRS",
+      "SOLID",
+      "Microservices",
+      "SignalR",
+      "Event-Driven Architecture",
+      "RESTful APIs",
+      "GraphQL"
+    ],
+    "tools": [
+      "Git",
+      "Docker",
+      "CI/CD",
+      "Playwright",
+      "xUnit",
+      "NUnit",
+      "Jasmine",
+      "Karma"
+    ]
+  },
+  "notable_achievements": [
+    {
+      "project": "Oops AppLock",
+      "type": "consumer_mobile",
+      "highlights": [
+        "7.7 million+ downloads on Google Play",
+        "Featured on LifeHacker",
+        "Android app lock utility",
+        "Top-ranked in productivity category"
+      ],
+      "best_for_roles": ["mobile", "consumer_product", "startup", "android"]
+    },
+    {
+      "project": "Samsung SDS",
+      "type": "enterprise",
+      "highlights": [
+        "$45,000 USD revenue generated in 6 months",
+        "20% cloud infrastructure cost reduction",
+        "PII encryption of 20 million+ records completed in 3 minutes",
+        "Enterprise-scale data security implementation"
+      ],
+      "best_for_roles": ["enterprise", "backend", "cloud", "dotnet", "corporate"]
+    },
+    {
+      "project": "ADNOC",
+      "type": "frontend_migration",
+      "highlights": [
+        "Angular 14 to Angular 19 full migration",
+        "55% bundle size reduction",
+        "33% API performance improvement",
+        "Large-scale enterprise frontend modernization"
+      ],
+      "best_for_roles": ["angular", "frontend", "migration", "performance"]
+    },
+    {
+      "project": "Skill Tenet",
+      "type": "creative_frontend",
+      "highlights": [
+        "Three.js 3D interactive globe hero section",
+        "GSAP animation pipeline",
+        "Vite build system implementation",
+        "High-performance marketing site"
+      ],
+      "best_for_roles": ["frontend", "creative", "startup", "threedjs", "animation"]
+    }
+  ],
+  "dream_companies": [
+    {
+      "name": "AXI",
+      "priority": "highest",
+      "reason": "Top priority target"
+    }
+  ],
+  "company_preferences": {
+    "ideal": ["product_startup", "series_a_to_c", "tech_company", "saas", "fintech", "ai_company"],
+    "acceptable": ["enterprise_product", "consulting_with_products"],
+    "avoid": ["body_shopping_agency", "pure_staff_augmentation", "uae_based", "outdated_tech_only"]
+  }
+}

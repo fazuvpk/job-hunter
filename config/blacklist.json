@@ -1,0 +1,66 @@
+{
+  "blacklisted_companies": [],
+  "blacklisted_patterns": {
+    "title_patterns": [
+      "body shop",
+      "staff augmentation",
+      "bench consultant",
+      "resource on bench",
+      "C2C only",
+      "corp to corp only",
+      "W2 required",
+      "US citizen required",
+      "security clearance required",
+      "TS/SCI",
+      "active clearance"
+    ],
+    "description_patterns": [
+      "must be willing to relocate to UAE",
+      "relocation to Dubai required",
+      "based in Dubai",
+      "based in Abu Dhabi",
+      "Abu Dhabi office",
+      "Dubai office required",
+      "on-site in UAE",
+      "US work authorization required",
+      "must be located in US",
+      "must reside in United States",
+      "no remote outside US",
+      "must have active US clearance",
+      "W2 only no C2C",
+      "100% on-site mandatory",
+      "no remote work available"
+    ],
+    "company_type_patterns": [
+      "staffing agency",
+      "IT staffing",
+      "body shopping",
+      "consulting bench",
+      "talent acquisition firm only",
+      "recruitment agency placing resources",
+      "contract to hire only via agency"
+    ],
+    "location_patterns": [
+      "Dubai, UAE",
+      "Abu Dhabi, UAE",
+      "United Arab Emirates",
+      "Sharjah, UAE",
+      "UAE only"
+    ]
+  },
+  "score_overrides": {
+    "instant_zero": [
+      "requires UAE relocation",
+      "US citizens only",
+      "salary below $2000/month",
+      "on-site only no exceptions"
+    ],
+    "heavy_penalty_minus_30": [
+      "agency placement",
+      "body shopping",
+      "unclear if remote",
+      "hybrid onsite heavy"
+    ]
+  },
+  "last_updated": "2026-04-08"
+}

@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Job Hunter — Review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=JetBrains+Mono:wght@300;400;500&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+<style>
+/* ─── Reset ─────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden}
+
+/* ─── Tokens ─────────────────────────────────────────── */
+:root{
+  --bg:       #06060A;
+  --surf:     #0C0C13;
+  --surf2:    #101018;
+  --brd:      #18182A;
+  --brd2:     #242438;
+  --txt:      #C2C2D4;
+  --txt2:     #5C5C78;
+  --txt3:     #2E2E44;
+  --acc:      #AAFF3E;
+  --acc-dim:  #5A8A20;
+  --go:       #3EFFAA;
+  --go-bg:    rgba(62,255,170,.06);
+  --skip:     #FF8844;
+  --skip-bg:  rgba(255,136,68,.06);
+  --ban:      #FF3366;
+  --ban-bg:   rgba(255,51,102,.06);
+  --r:        5px;
+}
+
+/* ─── Base ───────────────────────────────────────────── */
+body{
+  background:var(--bg);
+  color:var(--txt);
+  font-family:'JetBrains Mono',monospace;
+  font-size:13px;
+}
+
+/* ─── Loading ────────────────────────────────────────── */
+#loading{
+  position:fixed;inset:0;
+  display:flex;align-items:center;justify-content:center;
+  background:var(--bg);
+  font-family:'Bebas Neue',sans-serif;
+  font-size:22px;letter-spacing:6px;
+  color:var(--acc);
+  z-index:100;
+}
+.dot-pulse::after{
+  content:'...';
+  animation:dots 1.2s steps(4,end) infinite;
+}
+@keyframes dots{
+  0%,100%{content:''}
+  25%{content:'.'}
+  50%{content:'..'}
+  75%{content:'...'}
+}
+
+/* ─── App shell ──────────────────────────────────────── */
+#app{
+  display:grid;
+  grid-template-rows:48px 1fr 64px;
+  height:100vh;
+  opacity:0;
+  transition:opacity .3s;
+}
+#app.ready{opacity:1}
+
+/* ─── Header ─────────────────────────────────────────── */
+header{
+  display:grid;
+  grid-template-columns:auto 1fr auto;
+  align-items:center;
+  gap:24px;
+  padding:0 28px;
+  border-bottom:1px solid var(--brd);
+  background:var(--surf);
+  position:relative;
+  z-index:1;
+}
+.wordmark{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:16px;letter-spacing:4px;
+  color:var(--acc);
+}
+.progress-wrap{
+  display:flex;align-items:center;gap:10px;
+  justify-content:center;
+}
+.progress-label{font-size:10px;color:var(--txt2);letter-spacing:1px;white-space:nowrap}
+.progress-track{
+  flex:1;max-width:200px;height:2px;
+  background:var(--brd);border-radius:1px;overflow:hidden;
+}
+.progress-fill{
+  height:100%;background:var(--acc);border-radius:1px;
+  transition:width .5s cubic-bezier(.4,0,.2,1);
+}
+.keys-hint{font-size:10px;color:var(--txt3);letter-spacing:.3px}
+kbd{
+  display:inline-block;
+  border:1px solid var(--brd2);border-radius:3px;
+  padding:0 5px;font-size:9px;
+  color:var(--txt2);font-family:inherit;
+  margin:0 2px;
+}
+
+/* ─── Main grid ──────────────────────────────────────── */
+main{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  overflow:hidden;
+}
+
+/* ─── Left panel ─────────────────────────────────────── */
+aside{
+  border-right:1px solid var(--brd);
+  background:var(--surf);
+  display:flex;flex-direction:column;gap:22px;
+  padding:26px 22px;
+  overflow-y:auto;
+}
+
+/* Score dial */
+.dial-wrap{display:flex;flex-direction:column;align-items:center;gap:10px}
+#score-svg{width:130px;height:130px;overflow:visible}
+.dial-track{fill:none;stroke:var(--brd);stroke-width:7}
+#dial-arc{
+  fill:none;stroke:var(--acc);stroke-width:7;stroke-linecap:round;
+  transform-origin:65px 65px;
+  transform:rotate(-90deg);
+  transition:stroke-dashoffset .85s cubic-bezier(.4,0,.2,1), stroke .3s;
+  filter:drop-shadow(0 0 6px var(--acc));
+}
+#score-num{
+  font-family:'Bebas Neue',sans-serif;font-size:40px;
+  fill:var(--acc);dominant-baseline:middle;text-anchor:middle;
+  transition:fill .3s;
+}
+#score-lbl{
+  font-size:9px;fill:var(--txt3);
+  dominant-baseline:middle;text-anchor:middle;letter-spacing:3px;
+}
+.rec-pill{
+  font-size:10px;letter-spacing:2px;
+  padding:3px 14px;border-radius:20px;
+  font-weight:500;
+}
+.rec-APPLY   {background:var(--go-bg);  color:var(--go);  border:1px solid rgba(62,255,170,.2)}
+.rec-REVIEW  {background:rgba(170,255,62,.07);color:var(--acc);border:1px solid rgba(170,255,62,.2)}
+.rec-SKIP    {background:var(--skip-bg);color:var(--skip);border:1px solid rgba(255,136,68,.2)}
+.rec-AUTO_SKIP{background:var(--ban-bg);color:var(--ban); border:1px solid rgba(255,51,102,.2)}
+
+/* Company block */
+.company-name{
+  font-size:10px;letter-spacing:2.5px;text-transform:uppercase;
+  color:var(--txt2);margin-bottom:6px;
+}
+.job-title{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:18px;font-style:italic;line-height:1.35;
+  color:var(--txt);
+}
+
+/* Meta pills */
+.meta-chips{display:flex;flex-wrap:wrap;gap:5px}
+.chip{
+  font-size:9px;letter-spacing:.5px;
+  padding:2px 8px;border-radius:3px;
+  background:var(--surf2);border:1px solid var(--brd);
+  color:var(--txt2);
+}
+.chip.src{border-color:rgba(170,255,62,.15);color:var(--acc-dim)}
+
+/* Open link */
+.open-link{
+  display:flex;align-items:center;gap:7px;
+  font-size:10px;letter-spacing:.5px;
+  color:var(--txt2);text-decoration:none;
+  padding:8px 12px;
+  border:1px solid var(--brd);border-radius:var(--r);
+  transition:all .18s;
+}
+.open-link:hover{
+  border-color:var(--acc);color:var(--acc);
+  background:rgba(170,255,62,.04);
+}
+.open-link svg{flex-shrink:0}
+
+/* ─── Right panel ────────────────────────────────────── */
+.panel-right{
+  overflow-y:auto;
+  padding:28px 32px 20px;
+  display:flex;flex-direction:column;gap:28px;
+  background:var(--bg);
+  scroll-behavior:smooth;
+}
+
+.section-lbl{
+  font-size:9px;letter-spacing:3px;text-transform:uppercase;
+  color:var(--txt3);margin-bottom:10px;
+}
+
+/* Summary */
+.summary-text{
+  font-family:'Playfair Display',Georgia,serif;
+  font-size:14.5px;line-height:1.75;color:var(--txt);
+}
+
+/* Breakdown */
+.breakdown-list{display:flex;flex-direction:column;gap:7px}
+.bd-row{
+  display:grid;
+  grid-template-columns:150px 1fr 38px;
+  align-items:center;gap:10px;
+}
+.bd-label{
+  font-size:10px;letter-spacing:.4px;color:var(--txt2);
+  text-transform:uppercase;white-space:nowrap;
+  overflow:hidden;text-overflow:ellipsis;
+}
+.bd-track{height:3px;background:var(--brd);border-radius:2px;overflow:hidden}
+.bd-fill{
+  height:100%;border-radius:2px;
+  background:linear-gradient(90deg,var(--acc-dim),var(--acc));
+  transform:scaleX(0);transform-origin:left;
+  animation:barGrow .55s cubic-bezier(.4,0,.2,1) forwards;
+}
+@keyframes barGrow{to{transform:scaleX(1)}}
+.bd-score{font-size:10px;color:var(--txt2);text-align:right}
+
+/* Flags */
+.flags-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.flag-col-title{font-size:9px;letter-spacing:2px;margin-bottom:8px}
+.flag-col-title.g{color:var(--go)}
+.flag-col-title.r{color:var(--ban)}
+.flag-list{list-style:none;display:flex;flex-direction:column;gap:5px}
+.flag-item{
+  font-size:11px;line-height:1.5;
+  padding:6px 10px;border-radius:var(--r);
+  border-left:2px solid;
+}
+.flag-item.g{background:var(--go-bg);  border-color:var(--go);  color:var(--txt)}
+.flag-item.r{background:var(--ban-bg); border-color:var(--ban); color:var(--txt)}
+.flag-empty{font-size:11px;color:var(--txt3);font-style:italic}
+
+/* ─── Actions bar ────────────────────────────────────── */
+footer{
+  display:grid;grid-template-columns:1fr 1fr 1fr;
+  border-top:1px solid var(--brd);
+  background:var(--surf);
+}
+.act-btn{
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;border:none;background:none;cursor:pointer;
+  transition:background .12s;
+  font-family:'JetBrains Mono',monospace;
+  position:relative;
+}
+.act-btn+.act-btn{border-left:1px solid var(--brd)}
+.act-btn:disabled{opacity:.4;cursor:not-allowed}
+.act-btn .big{
+  font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:3px;
+}
+.act-btn .lbl{font-size:9px;letter-spacing:2px;text-transform:uppercase}
+/* Flash feedback */
+.act-btn::after{
+  content:'';position:absolute;inset:0;
+  opacity:0;pointer-events:none;
+  transition:opacity .15s;
+}
+.act-btn:active::after{opacity:1}
+
+.act-btn.go         {color:var(--go)}
+.act-btn.go:hover   {background:var(--go-bg)}
+.act-btn.go::after  {background:var(--go-bg)}
+
+.act-btn.sk         {color:var(--skip)}
+.act-btn.sk:hover   {background:var(--skip-bg)}
+.act-btn.sk::after  {background:var(--skip-bg)}
+
+.act-btn.bl         {color:var(--ban)}
+.act-btn.bl:hover   {background:var(--ban-bg)}
+.act-btn.bl::after  {background:var(--ban-bg)}
+
+/* ─── Done screen ────────────────────────────────────── */
+#done{
+  position:fixed;inset:0;background:var(--bg);
+  display:none;flex-direction:column;
+  align-items:center;justify-content:center;gap:14px;
+  z-index:200;
+}
+#done.show{display:flex}
+.done-title{
+  font-family:'Bebas Neue',sans-serif;
+  font-size:72px;letter-spacing:8px;
+  color:var(--acc);
+  animation:fadeUp .5s ease forwards;
+}
+.done-sub{
+  font-size:11px;letter-spacing:3px;color:var(--txt2);
+  animation:fadeUp .5s .1s ease forwards;opacity:0;
+}
+.done-stats{
+  font-size:11px;color:var(--txt3);
+  animation:fadeUp .5s .2s ease forwards;opacity:0;
+  margin-top:4px;letter-spacing:1px;
+}
+@keyframes fadeUp{
+  from{opacity:0;transform:translateY(12px)}
+  to{opacity:1;transform:translateY(0)}
+}
+
+/* ─── Card slide transition ──────────────────────────── */
+.slide-out-left {opacity:0;transform:translateX(-18px);transition:opacity .15s,transform .15s}
+.slide-out-right{opacity:0;transform:translateX( 18px);transition:opacity .15s,transform .15s}
+.slide-in-left  {opacity:0;transform:translateX(-18px)}
+.slide-in-right {opacity:0;transform:translateX( 18px)}
+.slide-in-done  {opacity:1;transform:translateX(0);transition:opacity .2s,transform .2s}
+
+/* ─── Scrollbar ──────────────────────────────────────── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:2px}
+
+/* ─── Mobile list icon button ────────────────────────── */
+.mob-list-btn{
+  display:none;
+  align-items:center;justify-content:center;
+  width:32px;height:32px;border-radius:var(--r);
+  border:1px solid var(--brd);background:none;cursor:pointer;
+  color:var(--txt2);transition:border-color .15s,color .15s;
+  flex-shrink:0;
+}
+.mob-list-btn:hover{border-color:var(--acc);color:var(--acc)}
+
+/* ─── Tablet (900px) ─────────────────────────────────── */
+@media(max-width:900px){
+  main{grid-template-columns:240px 1fr}
+  .panel-right{padding:20px 22px}
+  #score-svg{width:110px;height:110px}
+  aside{gap:18px;padding:20px 18px}
+}
+
+/* ─── Mobile (640px) ─────────────────────────────────── */
+@media(max-width:640px){
+  html,body{touch-action:pan-y}
+  #app{grid-template-rows:44px 1fr 72px}
+
+  /* Header */
+  header{padding:0 14px;gap:10px}
+  .keys-hint{display:none}
+  .mob-list-btn{display:flex}
+  .progress-track{max-width:120px}
+
+  /* Main: stack aside on top */
+  main{
+    grid-template-columns:1fr;
+    grid-template-rows:auto 1fr;
+    overflow:hidden;
+  }
+
+  /* Aside → compact horizontal strip */
+  aside{
+    flex-direction:row;
+    align-items:center;
+    gap:12px;
+    padding:10px 14px;
+    border-right:none;
+    border-bottom:1px solid var(--brd);
+    overflow-y:visible;
+    overflow-x:hidden;
+  }
+
+  /* Score dial: smaller, column */
+  .dial-wrap{flex-direction:column;gap:5px;flex-shrink:0}
+  #score-svg{width:60px;height:60px}
+  #score-num{font-size:28px}
+  #score-lbl{font-size:7px}
+  .rec-pill{font-size:8px;letter-spacing:1px;padding:2px 8px}
+
+  /* Company block: fill + truncate */
+  #left > div:nth-child(2){
+    flex:1;min-width:0;overflow:hidden;
+  }
+  .company-name{font-size:9px;margin-bottom:3px;letter-spacing:1.5px}
+  .job-title{
+    font-size:14px;line-height:1.25;
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+
+  /* Hide chips + link from aside; show slim link only */
+  .meta-chips{display:none}
+  .open-link{
+    padding:6px 8px;flex-shrink:0;
+    font-size:0; /* hide text, show icon only */
+  }
+  .open-link svg{width:14px;height:14px}
+
+  /* Right panel */
+  .panel-right{padding:14px 16px 10px;gap:20px}
+  .summary-text{font-size:13px;line-height:1.65}
+
+  /* Show chips in right panel on mobile */
+  .mob-chips{display:flex !important}
+
+  /* Breakdown: shorter label */
+  .bd-row{grid-template-columns:90px 1fr 34px;gap:8px}
+  .bd-label{font-size:9px}
+  .bd-score{font-size:9px}
+
+  /* Flags: single column */
+  .flags-grid{grid-template-columns:1fr}
+  .flag-item{font-size:11px}
+
+  /* Footer: taller tap targets */
+  footer{height:72px}
+  .act-btn .big{font-size:24px}
+  .act-btn .lbl{font-size:8px}
+}
+</style>
+</head>
+<body>
+
+<div id="loading"><span class="dot-pulse">LOADING</span></div>
+
+<div id="app">
+  <header>
+    <div class="wordmark">JOB HUNTER</div>
+    <div class="progress-wrap">
+      <span class="progress-label" id="prog-label">— / —</span>
+      <div class="progress-track"><div class="progress-fill" id="prog-fill" style="width:0%"></div></div>
+    </div>
+    <div class="keys-hint">
+      <kbd>←</kbd><kbd>→</kbd> browse &nbsp;
+      <kbd>A</kbd> approve &nbsp;
+      <kbd>S</kbd> skip &nbsp;
+      <kbd>B</kbd> blacklist &nbsp;
+      <kbd>Esc</kbd> list
+    </div>
+    <button class="mob-list-btn" onclick="openList()" title="All jobs">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <line x1="2" y1="4"  x2="14" y2="4"  stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="2" y1="8"  x2="14" y2="8"  stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        <line x1="2" y1="12" x2="10" y2="12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </header>
+
+  <main>
+    <!-- LEFT -->
+    <aside id="left">
+      <div class="dial-wrap">
+        <svg id="score-svg" viewBox="0 0 130 130">
+          <circle class="dial-track" cx="65" cy="65" r="52"/>
+          <circle id="dial-arc"      cx="65" cy="65" r="52"/>
+          <text id="score-num" x="65" y="62">—</text>
+          <text id="score-lbl" x="65" y="80">SCORE</text>
+        </svg>
+        <div id="rec-pill" class="rec-pill rec-REVIEW">—</div>
+      </div>
+
+      <div>
+        <div class="company-name" id="l-company">—</div>
+        <div class="job-title"    id="l-title">—</div>
+      </div>
+
+      <div class="meta-chips" id="l-chips"></div>
+
+      <a class="open-link" id="l-link" href="#" target="_blank" rel="noopener">
+        <svg width="11" height="11" viewBox="0 0 12 12" fill="none">
+          <path d="M2 2h8v8M10 2 2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+        </svg>
+        Open posting
+      </a>
+    </aside>
+
+    <!-- RIGHT -->
+    <div class="panel-right" id="right">
+      <!-- Mobile-only: chips + open link shown inline in scroll area -->
+      <div class="mob-chips" style="display:none;flex-wrap:wrap;gap:6px;align-items:center" id="mob-chips-row"></div>
+
+      <section>
+        <div class="section-lbl">Assessment</div>
+        <p class="summary-text" id="r-summary"></p>
+      </section>
+      <section>
+        <div class="section-lbl">Score Breakdown</div>
+        <div class="breakdown-list" id="r-breakdown"></div>
+      </section>
+      <section>
+        <div class="section-lbl">Signals</div>
+        <div class="flags-grid">
+          <div>
+            <div class="flag-col-title g">GREEN FLAGS</div>
+            <ul class="flag-list" id="r-green"></ul>
+          </div>
+          <div>
+            <div class="flag-col-title r">RED FLAGS</div>
+            <ul class="flag-list" id="r-red"></ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <button class="act-btn go" id="btn-a" onclick="decide('approve')">
+      <span class="big">A</span>
+      <span class="lbl">Approve</span>
+    </button>
+    <button class="act-btn sk" id="btn-s" onclick="decide('skip')">
+      <span class="big">S</span>
+      <span class="lbl">Skip</span>
+    </button>
+    <button class="act-btn bl" id="btn-b" onclick="decide('blacklist')">
+      <span class="big">B</span>
+      <span class="lbl">Blacklist Co.</span>
+    </button>
+  </footer>
+</div>
+
+<div id="done">
+  <div class="done-title">ALL CLEAR</div>
+  <div class="done-sub">Review queue empty</div>
+  <div class="done-stats" id="done-stats"></div>
+</div>
+
+<script>
+// ── Scoring dimension config ─────────────────────────────
+const DIMS = [
+  { key:'role_match',            label:'Role Match',     max:20 },
+  { key:'tech_stack_overlap',    label:'Tech Stack',     max:20 },
+  { key:'remote_compatibility',  label:'Remote',         max:15 },
+  { key:'seniority_alignment',   label:'Seniority',      max:10 },
+  { key:'salary_signal',         label:'Salary Signal',  max:10 },
+  { key:'company_quality',       label:'Co. Quality',    max:10 },
+  { key:'growth_opportunity',    label:'Growth',         max: 5 },
+  { key:'application_complexity',label:'Apply Ease',     max: 5 },
+  { key:'timezone_fit',          label:'Timezone',       max: 3 },
+  { key:'visa_clarity',          label:'Visa Clarity',   max: 2 },
+];
+
+// SVG arc constants
+const CX = 65, CY = 65, R = 52;
+const CIRC = 2 * Math.PI * R; // ≈ 326.7
+
+const arc    = document.getElementById('dial-arc');
+const scoreN = document.getElementById('score-num');
+arc.style.strokeDasharray = CIRC;
+arc.style.strokeDashoffset = CIRC; // fully hidden initially
+
+let jobs = [], idx = 0;
+let stats = { approved:0, skipped:0, blacklisted:0 };
+let listOpen = false;
+
+// ── Boot ─────────────────────────────────────────────────
+async function boot() {
+  try { jobs = await fetch('/api/jobs').then(r => r.json()); }
+  catch(e) { document.getElementById('loading').textContent = 'ERROR: server not reachable'; return; }
+
+  document.getElementById('loading').style.display = 'none';
+
+  if (!jobs.length) { showDone(); return; }
+
+  document.getElementById('app').style.display = 'grid';
+  requestAnimationFrame(() => document.getElementById('app').classList.add('ready'));
+  render(0);
+}
+
+// ── Render ───────────────────────────────────────────────
+function render(i) {
+  const job = jobs[i];
+  const total = jobs.length;
+  const score = job.score ?? 0;
+
+  // Progress
+  document.getElementById('prog-label').textContent = `${i + 1} / ${total}`;
+  document.getElementById('prog-fill').style.width = `${(i / total) * 100}%`;
+
+  // Score arc (animate via double rAF so transition fires)
+  const color = score >= 80 ? 'var(--go)' : score >= 60 ? 'var(--acc)' : 'var(--skip)';
+  arc.style.transition = 'none';
+  arc.style.strokeDashoffset = CIRC;
+  arc.style.stroke = color;
+  arc.style.filter = `drop-shadow(0 0 7px ${color})`;
+  scoreN.textContent = score;
+  scoreN.style.fill = color;
+
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    arc.style.transition = 'stroke-dashoffset .85s cubic-bezier(.4,0,.2,1)';
+    arc.style.strokeDashoffset = CIRC * (1 - score / 100);
+  }));
+
+  // Rec pill
+  const pill = document.getElementById('rec-pill');
+  pill.textContent = job.recommendation ?? '—';
+  pill.className = `rec-pill rec-${job.recommendation ?? 'REVIEW'}`;
+
+  // Left panel
+  document.getElementById('l-company').textContent = job.company ?? '—';
+  document.getElementById('l-title').textContent   = job.title   ?? '—';
+  document.getElementById('l-link').href           = job.url     ?? '#';
+
+  // Meta chips
+  const chips = document.getElementById('l-chips');
+  chips.innerHTML = '';
+  const metas = [
+    job.source   ? { t: job.source.toUpperCase(), c: 'chip src' } : null,
+    job.location ? { t: job.location,              c: 'chip'     } : null,
+    job.salary_raw && job.salary_raw.trim() ? { t: job.salary_raw, c: 'chip' } : null,
+  ].filter(Boolean);
+  metas.forEach(m => {
+    const el = document.createElement('div');
+    el.className = m.c; el.textContent = m.t;
+    chips.appendChild(el);
+  });
+
+  // Summary
+  document.getElementById('r-summary').textContent = job.score_summary || 'No assessment available.';
+
+  // Breakdown bars
+  const bd = document.getElementById('r-breakdown');
+  bd.innerHTML = '';
+  const breakdown = job.score_breakdown ?? {};
+  DIMS.forEach(({ key, label, max }, di) => {
+    const val = breakdown[key] ?? 0;
+    const pct = max > 0 ? (val / max) * 100 : 0;
+    const row = document.createElement('div');
+    row.className = 'bd-row';
+    row.innerHTML = `
+      <span class="bd-label">${label}</span>
+      <div class="bd-track">
+        <div class="bd-fill" style="width:${pct}%;animation-delay:${di * 35}ms"></div>
+      </div>
+      <span class="bd-score">${val}/${max}</span>`;
+    bd.appendChild(row);
+  });
+
+  // Flags
+  const gf = document.getElementById('r-green');
+  const rf = document.getElementById('r-red');
+  gf.innerHTML = '';
+  rf.innerHTML = '';
+
+  const greens = Array.isArray(job.green_flags) ? job.green_flags : [];
+  const reds   = Array.isArray(job.red_flags)   ? job.red_flags   : [];
+
+  if (greens.length === 0) {
+    gf.innerHTML = '<span class="flag-empty">None noted</span>';
+  } else {
+    greens.forEach(f => {
+      const li = document.createElement('li');
+      li.className = 'flag-item g'; li.textContent = f; gf.appendChild(li);
+    });
+  }
+  if (reds.length === 0) {
+    rf.innerHTML = '<span class="flag-empty">None noted</span>';
+  } else {
+    reds.forEach(f => {
+      const li = document.createElement('li');
+      li.className = 'flag-item r'; li.textContent = f; rf.appendChild(li);
+    });
+  }
+
+  // Mobile chips row (mirrors aside chips + open link)
+  const mobRow = document.getElementById('mob-chips-row');
+  mobRow.innerHTML = '';
+  metas.forEach(m => {
+    const el = document.createElement('div');
+    el.className = m.c; el.textContent = m.t;
+    mobRow.appendChild(el);
+  });
+  const mobLink = document.createElement('a');
+  mobLink.href = job.url ?? '#';
+  mobLink.target = '_blank';
+  mobLink.rel = 'noopener';
+  mobLink.className = 'open-link';
+  mobLink.style.cssText = 'padding:3px 8px;font-size:9px;text-decoration:none';
+  mobLink.innerHTML = `<svg width="10" height="10" viewBox="0 0 12 12" fill="none"><path d="M2 2h8v8M10 2 2 10" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg> Open`;
+  mobRow.appendChild(mobLink);
+
+  // Scroll right panel to top
+  document.getElementById('right').scrollTop = 0;
+}
+
+// ── Shared transition ────────────────────────────────────
+let busy = false;
+
+function transition(newIdx, dir) {
+  // dir: 'forward' | 'back'
+  if (busy) return;
+  busy = true;
+  const left  = document.getElementById('left');
+  const right = document.getElementById('right');
+  const outCls = dir === 'forward' ? 'slide-out-left' : 'slide-out-right';
+  const inCls  = dir === 'forward' ? 'slide-in-right' : 'slide-in-left';
+
+  left.classList.add(outCls);
+  right.classList.add(outCls);
+
+  setTimeout(() => {
+    left.classList.remove(outCls);
+    right.classList.remove(outCls);
+    left.classList.add(inCls);
+    right.classList.add(inCls);
+
+    idx = newIdx;
+    render(idx);
+
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      left.classList.remove(inCls);
+      right.classList.remove(inCls);
+      left.classList.add('slide-in-done');
+      right.classList.add('slide-in-done');
+      setTimeout(() => {
+        left.classList.remove('slide-in-done');
+        right.classList.remove('slide-in-done');
+        busy = false;
+      }, 220);
+    }));
+  }, 160);
+}
+
+// ── Arrow navigation ─────────────────────────────────────
+function navigate(dir) {
+  if (listOpen) return;
+  const next = dir === 'forward' ? idx + 1 : idx - 1;
+  if (next < 0 || next >= jobs.length) return;
+  transition(next, dir);
+}
+
+// ── Decide ───────────────────────────────────────────────
+async function decide(action) {
+  if (busy || listOpen || idx >= jobs.length) return;
+
+  const job = jobs[idx];
+  const btns = ['btn-a','btn-s','btn-b'].map(id => document.getElementById(id));
+  btns.forEach(b => b.disabled = true);
+
+  try { await fetch(`/api/jobs/${job.id}/${action}`, { method:'POST' }); }
+  catch(e) { console.error(e); }
+
+  if (action === 'approve')        stats.approved++;
+  else if (action === 'blacklist') stats.blacklisted++;
+  else                             stats.skipped++;
+
+  // Mark job locally so list view reflects it
+  job._decided = action;
+
+  if (idx + 1 >= jobs.length) {
+    showDone();
+    return;
+  }
+
+  transition(idx + 1, 'forward');
+  setTimeout(() => btns.forEach(b => b.disabled = false), 400);
+}
+
+// ── Done ─────────────────────────────────────────────────
+function showDone() {
+  document.getElementById('prog-fill').style.width = '100%';
+  document.getElementById('prog-label').textContent = `${jobs.length} / ${jobs.length}`;
+
+  setTimeout(() => {
+    document.getElementById('app').style.opacity = '0';
+    document.getElementById('app').style.transition = 'opacity .4s';
+    setTimeout(() => {
+      document.getElementById('app').style.display = 'none';
+      document.getElementById('done').classList.add('show');
+      document.getElementById('done-stats').textContent =
+        `Approved: ${stats.approved}  ·  Skipped: ${stats.skipped}  ·  Blacklisted: ${stats.blacklisted}`;
+    }, 400);
+  }, 200);
+}
+
+// ── List view ────────────────────────────────────────────
+function openList() {
+  if (listOpen) return closeList();
+  listOpen = true;
+
+  const overlay = document.createElement('div');
+  overlay.id = 'list-overlay';
+  overlay.style.cssText = `
+    position:fixed;inset:0;z-index:50;
+    background:rgba(6,6,10,.92);
+    backdrop-filter:blur(6px);
+    display:flex;flex-direction:column;
+    padding:32px;overflow-y:auto;
+    animation:fadeUp .2s ease forwards;
+  `;
+
+  const title = document.createElement('div');
+  title.style.cssText = `
+    font-family:'Bebas Neue',sans-serif;font-size:18px;
+    letter-spacing:5px;color:var(--acc);
+    margin-bottom:20px;display:flex;justify-content:space-between;
+    align-items:center;
+  `;
+  title.innerHTML = `<span>ALL JOBS</span><span style="font-size:11px;letter-spacing:2px;color:var(--txt3);font-family:'JetBrains Mono',monospace">ESC to close</span>`;
+  overlay.appendChild(title);
+
+  jobs.forEach((job, i) => {
+    const row = document.createElement('div');
+    const score = job.score ?? 0;
+    const color = score >= 80 ? 'var(--go)' : score >= 60 ? 'var(--acc)' : 'var(--skip)';
+    const decided = job._decided;
+    const isCurrent = i === idx;
+    row.style.cssText = `
+      display:grid;grid-template-columns:48px 1fr auto;gap:14px;
+      align-items:center;padding:11px 14px;border-radius:5px;
+      border:1px solid ${isCurrent ? 'var(--brd2)' : 'var(--brd)'};
+      background:${isCurrent ? 'var(--surf2)' : 'transparent'};
+      margin-bottom:5px;cursor:pointer;
+      opacity:${decided ? '.45' : '1'};
+      transition:background .12s,border-color .12s;
+    `;
+    row.innerHTML = `
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:${color}">${score}</span>
+      <span style="font-family:'Playfair Display',serif;font-style:italic;font-size:14px;color:var(--txt)">
+        ${job.title}
+        <span style="font-family:'JetBrains Mono',monospace;font-style:normal;font-size:10px;color:var(--txt2);display:block;margin-top:2px">${job.company}</span>
+      </span>
+      <span style="font-size:9px;letter-spacing:1px;color:${decided === 'approve' ? 'var(--go)' : decided ? 'var(--txt3)' : 'var(--txt3)'}">
+        ${decided ? decided.toUpperCase() : isCurrent ? '← HERE' : ''}
+      </span>
+    `;
+    row.addEventListener('mouseenter', () => { if (!decided) row.style.background = 'var(--surf)'; });
+    row.addEventListener('mouseleave', () => { row.style.background = isCurrent ? 'var(--surf2)' : 'transparent'; });
+    row.addEventListener('click', () => {
+      const dir = i > idx ? 'forward' : 'back';
+      closeList();
+      if (i !== idx) setTimeout(() => transition(i, dir), 50);
+    });
+    overlay.appendChild(row);
+  });
+
+  overlay.addEventListener('click', e => { if (e.target === overlay) closeList(); });
+  document.body.appendChild(overlay);
+}
+
+function closeList() {
+  const overlay = document.getElementById('list-overlay');
+  if (overlay) overlay.remove();
+  listOpen = false;
+}
+
+// ── Keyboard ─────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.repeat || e.metaKey || e.ctrlKey || e.altKey) return;
+
+  if (e.key === 'Escape') {
+    e.preventDefault();
+    if (listOpen) closeList();
+    else openList();
+    return;
+  }
+
+  if (listOpen) return;
+
+  if (e.key === 'ArrowRight') { e.preventDefault(); navigate('forward'); return; }
+  if (e.key === 'ArrowLeft')  { e.preventDefault(); navigate('back');    return; }
+
+  const map = { a:'approve', s:'skip', b:'blacklist' };
+  const action = map[e.key.toLowerCase()];
+  if (action) { e.preventDefault(); decide(action); }
+});
+
+// ── Touch swipe ───────────────────────────────────────────
+let touchX = null;
+document.addEventListener('touchstart', e => {
+  touchX = e.touches[0].clientX;
+}, { passive: true });
+
+document.addEventListener('touchend', e => {
+  if (touchX === null || listOpen) return;
+  const dx = e.changedTouches[0].clientX - touchX;
+  touchX = null;
+  if (Math.abs(dx) < 50) return; // too short
+  if (dx < 0) navigate('forward'); // swipe left → next
+  else         navigate('back');   // swipe right → prev
+}, { passive: true });
+
+boot();
+</script>
+</body>
+</html>
