@@ -1,52 +1,45 @@
 {
   "titles": [
-    "Senior Full Stack Developer",
-    "Angular Frontend Developer",
-    "Senior .NET Developer",
-    "Lead Full Stack Engineer",
-    "Senior Angular Developer",
-    "Full Stack Engineer",
-    "Senior Software Engineer",
-    ".NET Solutions Architect"
+    "AI Automation Engineer",
+    "RPA Developer",
+    "n8n Developer",
+    "Automation Engineer",
+    "Data Engineer",
+    "LLM Integration Engineer",
+    "AI Engineer",
+    "Junior AI Automation Engineer",
+    "Workflow Automation Developer",
+    "Process Automation Engineer"
   ],
-  "remote_only": true,
-  "salary_min_usd_month": 4000,
-  "results_per_title": 25,
-  "sites": [
-    "linkedin",
-    "indeed",
-    "glassdoor",
-    "zip_recruiter",
-    "google"
-  ],
+  "sites": ["linkedin", "indeed", "glassdoor", "google"],
+  "remote_only": false,
+  "preferred_locations": ["Abu Dhabi", "Dubai", "UAE", "Remote"],
+  "salary_min_usd_month": 2500,
+  "salary_min_aed_month": 10000,
+  "results_per_title": 20,
   "score_threshold_for_review": 60,
   "score_threshold_for_auto_skip": 35,
   "daily_application_limit": 8,
-  "pacing_seconds": [3, 8],
-  "search_filters": {
-    "experience_level": ["mid_senior", "director"],
-    "job_type": ["fulltime", "contract"],
-    "posted_within_days": 14
-  },
-  "keywords_required": [],
   "keywords_preferred": [
-    "Angular",
-    ".NET",
-    "TypeScript",
-    "remote",
-    "async",
-    "Senior",
-    "Lead"
+    "n8n",
+    "UiPath",
+    "Power Automate",
+    "LLM",
+    "Python",
+    "RAG",
+    "Supabase",
+    "workflow",
+    "ETL",
+    "automation",
+    "AI",
+    "RPA"
   ],
   "keywords_exclude": [
-    "UAE",
-    "Dubai",
-    "Abu Dhabi",
-    "on-site only",
-    "onsite only",
-    "relocation required",
+    "10+ years required",
     "US citizens only",
     "clearance required",
-    "security clearance"
-  ]
+    "must relocate to US",
+    "W2 only"
+  ],
+  "search_notes": "Search Abu Dhabi UAE AND Remote for each title. UAE resident visa = strong advantage for UAE-located roles."
 }

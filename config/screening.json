@@ -1,90 +1,47 @@
 {
   "standard_answers": {
-    "years_dotnet": "10",
-    "years_dotnet_core": "8",
-    "years_angular": "7",
-    "years_typescript": "7",
-    "years_react": "4",
-    "years_nodejs": "5",
-    "years_sql": "10",
-    "years_azure": "5",
-    "years_aws": "4",
-    "total_experience": "10",
-    "current_salary": "Prefer not to disclose",
-    "expected_salary": "$4,000–$6,000 per month USD",
-    "expected_salary_annual": "$48,000–$72,000 USD per year",
-    "notice_period": "Available immediately",
-    "notice_period_weeks": "0",
-    "location": "Kerala, India",
-    "country": "India",
-    "city": "Kerala",
-    "timezone": "IST (UTC+5:30)",
-    "work_authorization": "Indian citizen, open to visa sponsorship",
-    "eligible_to_work": "Yes, in India. Open to sponsorship for other countries.",
-    "willing_to_relocate": "No, seeking fully remote position",
-    "remote_preference": "Fully remote",
-    "travel_availability": "Available for occasional travel within India",
-    "linkedin": "https://www.linkedin.com/in/fazilkunhamed",
-    "github": "",
-    "portfolio": "",
-    "phone": "+917356634634",
-    "email": "fazil.kunhamed@gmail.com",
-    "full_name": "Fazil Kunhamed",
-    "first_name": "Fazil",
-    "last_name": "Kunhamed"
+    "years_n8n": "2",
+    "years_automation": "2",
+    "years_python": "2",
+    "years_sql": "2",
+    "years_uipath": "1",
+    "years_llm_apis": "1",
+    "years_power_bi": "2",
+    "years_aws": "1",
+    "years_azure": "1",
+    "years_data_engineering": "2"
   },
-  "dropdown_mappings": {
-    "experience_level": {
-      "entry": null,
-      "junior": null,
-      "mid": "5-7 years",
-      "senior": "10+ years",
-      "lead": "10+ years",
-      "principal": "10+ years"
-    },
-    "work_type": {
-      "remote": "Yes",
-      "hybrid": "Negotiable",
-      "onsite": "No"
-    },
-    "employment_type": {
-      "full_time": "Preferred",
-      "part_time": "No",
-      "contract": "Open",
-      "freelance": "Open"
-    },
-    "visa_sponsorship_needed": "Yes, open to sponsorship",
-    "us_work_authorization": "No, would need sponsorship",
-    "uk_work_authorization": "No, would need sponsorship",
-    "eu_work_authorization": "No, would need sponsorship"
+  "personal": {
+    "full_name": "Mohammed Afsal V P",
+    "email": "YOUR_EMAIL@gmail.com",
+    "phone": "+971XXXXXXXXX",
+    "linkedin": "https://www.linkedin.com/in/mohammed-afsal-v-p-2bb9b7249/",
+    "portfolio": "https://portfolio-plum-pi-62.vercel.app",
+    "github": "https://github.com/mohammadafsalvp",
+    "location": "Abu Dhabi, UAE",
+    "timezone": "GST (UTC+4)",
+    "work_authorization": "UAE Resident Visa holder — no sponsorship needed for UAE roles"
+  },
+  "compensation": {
+    "expected_salary": "AED 10,000–15,000/month or USD 2,500–4,000/month",
+    "currency_preference": "AED for UAE roles, USD for remote international roles",
+    "open_to_equity": true,
+    "notice_period": "Immediate"
   },
   "essay_answers": {
-    "why_interested": "I'm drawn to companies building meaningful products where deep technical expertise can drive real business outcomes. With 10 years spanning Angular, .NET, and cloud architecture, I focus on roles where I can contribute at both the code and system design level.",
-    "biggest_achievement": "Led the migration of a large Angular 14 application to Angular 19 at ADNOC, achieving a 55% bundle size reduction and 33% API performance improvement. Also built Oops AppLock which reached 7.7 million downloads and was featured on LifeHacker.",
-    "why_remote": "I've worked effectively in distributed, async-first teams for several years. My productivity and communication improve in remote settings where I can do deep work and contribute across time zones.",
-    "salary_expectation_context": "My target range is $4,000–$6,000 USD per month depending on the role scope, responsibilities, and benefits package. I'm open to discussing the full compensation structure.",
-    "cover_of_application": "See attached cover letter."
+    "why_interested": "I specialize in building practical AI automation systems — n8n workflows, UiPath RPA, and LLM integrations that replace manual processes with reliable pipelines. I'm drawn to roles where I can apply this hands-on experience to solve real business problems, particularly at companies where automation is core to the product or operations.",
+    "biggest_achievement": "I built an AI-powered lead qualification system using n8n, Telegram, OpenAI/Gemini, and Supabase that auto-classifies leads as Hot/Warm/Cold and handles 100% of CRM entry and follow-up without human intervention. Separately, I designed and delivered an AWS pipeline (S3 → Lambda → Redshift) that processes 14,000+ telecom records end-to-end with zero manual steps — reducing reporting effort by 40%.",
+    "why_automation": "Automation compounds — every hour I save a team today becomes a permanent efficiency gain. My B.Tech in AI & Data Science gave me the foundation, but building production systems like the lead qualification engine and data pipelines showed me the real leverage: connecting the right tools (n8n, UiPath, LLM APIs) with business workflows creates compounding value.",
+    "salary_expectation_context": "My expectation of AED 10,000–15,000/month reflects the UAE market rate for an AI automation specialist with 2 years of production experience, UiPath certification (48.5hr), and an IIT Madras AI certification. I'm flexible for the right role with growth potential.",
+    "uae_residency_note": "I'm based in Abu Dhabi with an active UAE resident visa — no sponsorship or relocation required.",
+    "remote_preference": "I'm comfortable fully remote, hybrid, or on-site in Abu Dhabi/Dubai. I have strong async communication practices from working on distributed pipelines.",
+    "relocation": "Based in Abu Dhabi, UAE. Open to Dubai. No international relocation required.",
+    "visa_status": "UAE Resident Visa — active, no employer sponsorship needed"
   },
-  "ats_platform_hints": {
-    "greenhouse": {
-      "resume_field": "resume",
-      "cover_letter_field": "cover_letter",
-      "submit_button": "Submit Application"
-    },
-    "lever": {
-      "resume_field": "resume",
-      "cover_letter_field": "comments",
-      "submit_button": "Submit Application"
-    },
-    "workday": {
-      "resume_field": "file",
-      "cover_letter_field": "coverLetter",
-      "submit_button": "Submit"
-    },
-    "linkedin_easy_apply": {
-      "uses_linkedin_profile": true,
-      "cover_letter_field": "coverLetter",
-      "submit_button": "Submit application"
-    }
-  }
+  "certifications_to_mention": [
+    "Applied AI Mastery — IIT Madras (IITM Pravartak), 2026",
+    "Complete UiPath RPA Developer (48.5 hrs) — Udemy, Jan 2026",
+    "RPA Developer Foundation — UiPath Academy, Jan 2026",
+    "Prompt Engineering — Dubai Future Foundation, Oct 2025"
+  ]
 }

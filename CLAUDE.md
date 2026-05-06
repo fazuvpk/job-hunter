@@ -1,41 +1,52 @@
-# Job Hunter - Claude Code Skill File
+# Job Hunter — Claude Code Skill File
 
 ## Candidate Profile (Source of Truth)
 
-**Name:** Fazil Kunhamed  
-**Email:** fazil.kunhamed@gmail.com  
-**Phone:** +917356634634  
-**Location:** Kerala, India  
-**LinkedIn:** https://www.linkedin.com/in/fazilkunhamed  
-**Years of Experience:** 10  
-**Availability:** Immediate  
-**Work Authorization:** Indian citizen, open to visa sponsorship  
-**Travel:** Weekly within India OK; abroad depends on offer; **avoid UAE**  
-**Remote:** Fully remote, global preferred  
-**Salary Floor:** $4,000 USD/month minimum (target $4,000–$6,000/month)
+**Name:** Mohammed Afsal V P
+**Email:** YOUR_EMAIL@gmail.com
+**Phone:** +971XXXXXXXXX
+**Location:** Abu Dhabi, UAE
+**LinkedIn:** https://www.linkedin.com/in/mohammed-afsal-v-p-2bb9b7249/
+**Portfolio:** https://portfolio-plum-pi-62.vercel.app
+**GitHub:** https://github.com/mohammadafsalvp
+**Years of Experience:** 2
+**Education:** B.Tech AI & Data Science, Anna University, CGPA 7.56
+**Availability:** Immediate
+**Work Authorization:** UAE Resident Visa — no sponsorship needed for UAE roles
+**Travel:** Open to UAE; remote preferred
+**Remote:** Open to UAE on-site, hybrid, or fully remote (global)
+**Salary Floor:** AED 10,000/month (~USD 2,500/month); target AED 10,000–15,000/month
 
 ### Tech Stack
-- **Backend:** .NET Core, ASP.NET MVC, Web API, Entity Framework, Node.js, SQL Server
-- **Frontend:** Angular 14–19, React, Vue, TypeScript, RxJS, JavaScript ES2022
-- **Mobile:** Android (Kotlin, Java)
-- **AI/Automation:** Claude Code, OpenAI API, n8n
-- **Cloud:** AWS (SES, S3, Kinesis), Azure (App Services, Web Jobs, Storage, Event Grid)
-- **Architecture:** Clean Architecture, CQRS, SOLID, Microservices, SignalR
+- **Automation:** n8n, UiPath, Power Automate, Make, Zapier
+- **AI/LLM:** LLM APIs (OpenAI, Azure OpenAI), Prompt Engineering, RAG
+- **Programming:** Python, SQL
+- **Databases:** Supabase (PostgreSQL), Firebase
+- **Cloud:** AWS (S3, Redshift, Lambda), Azure (Fundamentals, OpenAI)
+- **APIs:** REST, JSON, OAuth, Webhooks
+- **BI:** Power BI, Tableau, Excel
+- **Data:** ETL/ELT pipelines, data ingestion & transformation
+- **RPA:** UiPath (48.5hr Udemy cert + UiPath Academy Foundation cert)
 
 ### Notable Achievements
-- **Oops AppLock** (Android): 7.7M+ downloads, featured on LifeHacker
-- **Samsung SDS:** $45K revenue in 6 months, 20% cloud cost reduction, PII encryption of 20M+ records in 3 minutes
-- **ADNOC:** Angular 14→19 migration, 55% bundle reduction, 33% API performance improvement
-- **Skill Tenet:** Three.js 3D globe hero section, GSAP animations, Vite build pipeline
+- **AI Lead Qualification System:** n8n + Telegram + LLM + Supabase → 100% automated lead classification (Hot/Warm/Cold) + CRM entry + follow-up
+- **Data Intelligence Pipeline:** 14,000+ records processed end-to-end; 40% reduction in manual reporting effort
+- **Customer Analytics (AWS):** 100% automated S3 → Lambda → Redshift for 14,000+ telecom records; zero manual intervention
+- **UiPath RPA:** OCR-based extraction from unstructured documents; eliminated human data entry errors
+- **Skill Tenet Conversation Engine:** LLM-driven multilingual recruitment automation + candidate repository
+- **Idempotent Order Processing:** Python stdlib only, air-gapped RHEL 9.4, SHA-256 audit trail, exponential backoff
+- **Research Publication:** "AutoStream: Your All-in-One Data Science Assistant Using LLM" — IJSREM Vol.09 Issue 04, April 2025
 
 ### Dream Companies
-- AXI (priority)
-- Funded startups seeking senior technical consultation
+- n8n GmbH (priority — core tool expert)
+- UiPath (certified developer)
+- Automation Anywhere (UAE/MENA market leader)
 
 ### Blacklist
 - Pure body-shopping / staff augmentation agencies
-- UAE-relocation required roles
-- Roles below $4,000/month
+- Roles requiring 7+ years experience
+- Salary below AED 5,000/month
+- US citizens only / clearance required
 
 ---
 
@@ -51,7 +62,8 @@
    - `site_name`: all sites from `sites` array
    - `search_term`: current title
    - `results_wanted`: `results_per_title`
-   - `is_remote`: true
+   - `is_remote`: false (search both UAE-located and remote)
+   - `location`: search "Abu Dhabi UAE" AND "Remote" for each title
 3. For each job returned:
    - Check `data/jobs.db` for duplicate `external_id` — skip if exists
    - Check `config/blacklist.json` patterns against title + company + description
@@ -75,30 +87,30 @@
 2. For each job, display a formatted card:
    ```
    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-   [SCORE: 87/100] Senior Full Stack Developer
-   Company:  Acme Corp (Product startup)
-   Location: Remote (Global)
-   Salary:   $5,000–$7,000/month
+   [SCORE: 87/100] AI Automation Engineer
+   Company:  TechFlow UAE (SaaS product)
+   Location: Abu Dhabi, UAE (hybrid)
+   Salary:   AED 12,000–16,000/month
    Source:   LinkedIn
    URL:      https://...
 
-   GREEN FLAGS: Angular 19, remote-first, equity
+   GREEN FLAGS: n8n required, UAE role (no visa friction), Python + Supabase
    RED FLAGS:   None
 
-   SUMMARY: Strong Angular + .NET role at product startup.
-            Fully async team, no relocation required.
+   SUMMARY: Strong n8n + Python automation role at UAE SaaS startup.
+            Hybrid Abu Dhabi — Afsal's resident visa means zero friction.
 
    BREAKDOWN:
-     Role match:          18/20
-     Tech stack:          17/20
-     Remote:              15/15
-     Seniority:           10/10
-     Salary signal:       10/10
-     Company quality:      9/10
-     Growth opportunity:   4/5
-     Application ease:     3/5
-     Timezone fit:         3/3
-     Visa clarity:         1/2
+     Role match:            18/20
+     Tech stack:            17/20
+     Location/remote fit:   15/15
+     Seniority alignment:   10/10
+     Salary signal:         10/10
+     Company quality:        9/10
+     Growth opportunity:     4/5
+     Application ease:       3/5
+     Timezone fit:           3/3
+     Visa clarity:           2/2
 
    ─────────────────────────────────────────
    [A] Approve   [S] Skip   [B] Blacklist company
@@ -162,7 +174,7 @@
 ```
 ━━━━━━━━━━━━━━━━ JOB HUNTER DASHBOARD ━━━━━━━━━━━━━━━━
 
-TODAY (2026-04-08)
+TODAY (2026-05-06)
   Discovered:   12    Applied:  3 / 8 limit
   Scored:       12    Responses: 0
 
@@ -175,14 +187,14 @@ ALL TIME PIPELINE
   Interviews:     2
 
 RECENT APPLICATIONS (last 7 days)
-  2026-04-07  Acme Corp — Senior Full Stack Dev      ✓ Submitted
-  2026-04-06  TechStartup — Angular Developer        ✓ Submitted
-  2026-04-05  GlobalSoft — .NET Architect            ⏳ Pending response
+  2026-05-05  n8n GmbH — Automation Engineer          ✓ Submitted
+  2026-05-04  TechFlow UAE — AI Automation Engineer   ✓ Submitted
+  2026-05-03  UiPath — RPA Developer                  ⏳ Pending response
 
 TOP PENDING (ready to review)
-  Score 91 — Lead Full Stack Engineer @ NovaTech
-  Score 84 — Senior Angular Dev @ ProductHouse
-  Score 78 — .NET Solutions Architect @ CloudCo
+  Score 91 — AI Automation Engineer @ n8n GmbH (HIGH PRIORITY — n8n expert override)
+  Score 84 — RPA Developer @ UiPath
+  Score 78 — Workflow Automation Dev @ CloudCo UAE
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 ```
 
@@ -192,23 +204,25 @@ TOP PENDING (ready to review)
 
 ### `/job-hunter:watchlist`
 
-**Purpose:** Check AXI and priority companies for new job openings.
+**Purpose:** Check n8n GmbH, UiPath, Automation Anywhere and other priority companies for new job openings.
 
 **Steps:**
 1. Read `config/watchlist.json` for company list and URLs
-2. For each company, use Playwright to:
+2. **Always check n8n GmbH first** before any other company
+3. For each company, use Playwright to:
    - Navigate to careers page URL
    - Extract all open roles with titles, locations, links
    - Pace: 3–8 seconds between companies
-3. For each role found:
+4. For each role found:
    - Check if already in `jobs` table by URL or title+company
    - If new: score it, insert as `status = 'pending'`
-4. Report: "AXI: 2 new roles found. [titles]"
+5. **Special n8n GmbH rule:** Any n8n GmbH role scoring >= 45 → flag as HIGH PRIORITY, add `notes = 'n8n expert override — priority flag'`
+6. Report: "n8n GmbH: 2 new roles found. [titles]"
 
-**Special handling for AXI:**
-- Always check AXI first
-- Flag any AXI role scoring >= 50 as high priority (score override note in `notes`)
-- Display AXI results prominently regardless of score
+**Special handling for n8n GmbH:**
+- Always check first
+- Flag any role scoring >= 45 as high priority (score override note in `notes`)
+- Display n8n GmbH results prominently regardless of score
 
 **MCP Tools Used:** `playwright`, `sqlite`
 
@@ -240,7 +254,7 @@ See `prompts/scorer.md` for the full prompt. Dimensions:
 |-----------|-----------|
 | Role match | 20 |
 | Tech stack overlap | 20 |
-| Remote compatibility | 15 |
+| Location / remote fit | 15 |
 | Seniority alignment | 10 |
 | Salary signal | 10 |
 | Company quality | 10 |
@@ -251,7 +265,7 @@ See `prompts/scorer.md` for the full prompt. Dimensions:
 | **Total** | **100** |
 
 - **>= 80:** Auto-recommend APPLY
-- **60–79:** REVIEW (show to Fazil)
+- **60–79:** REVIEW (show to Afsal)
 - **35–59:** Flag as borderline SKIP
 - **< 35:** Auto-skip, never show
 
@@ -260,8 +274,8 @@ See `prompts/scorer.md` for the full prompt. Dimensions:
 ## MCP Tool Usage Instructions
 
 ### JobSpy MCP (`jobspy`)
-- Use for initial job discovery across LinkedIn, Indeed, Glassdoor, ZipRecruiter, Google Jobs
-- Always pass `is_remote: true`
+- Use for initial job discovery across LinkedIn, Indeed, Glassdoor, Google Jobs
+- Pass `is_remote: false` and search both "Abu Dhabi UAE" and "Remote" for each title
 - Deduplicate by `job_url` before inserting
 
 ### Playwright MCP (`playwright`)

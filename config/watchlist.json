@@ -1,78 +1,53 @@
 {
   "priority_companies": [
     {
-      "name": "AXI",
+      "name": "n8n GmbH",
       "priority": "highest",
-      "careers_url": "https://axi.com/careers",
-      "check_frequency": "daily",
-      "notes": "Dream company — flag all roles scoring >= 50, override to high priority",
-      "alert_always": true
+      "careers_url": "https://n8n.io/careers",
+      "alert_always": true,
+      "check_schedule": "daily",
+      "notes": "Afsal is a core n8n expert with production deployments. Any open role >= 45 score = high priority flag regardless of score. Always check first."
+    },
+    {
+      "name": "UiPath",
+      "priority": "high",
+      "careers_url": "https://www.uipath.com/company/careers",
+      "alert_always": true,
+      "check_schedule": "daily",
+      "notes": "Certified UiPath developer — strong differentiator. Flag any UAE/remote role."
+    },
+    {
+      "name": "Automation Anywhere",
+      "priority": "high",
+      "careers_url": "https://www.automationanywhere.com/company/careers",
+      "alert_always": false,
+      "check_schedule": "every_2_days",
+      "notes": "UAE/MENA market leader in RPA. Focus on Middle East or remote roles."
     }
   ],
   "startup_categories": [
     {
-      "category": "Fintech Startups",
-      "description": "Series A-C fintech companies with remote-first engineering",
-      "search_terms": ["fintech startup senior engineer remote", "fintech angular dotnet remote"],
-      "priority": "high"
+      "category": "UAE AI Startups",
+      "search_queries": [
+        "ai automation engineer abu dhabi",
+        "n8n developer dubai",
+        "rpa developer uae",
+        "ai engineer abu dhabi"
+      ],
+      "check_schedule": "every_2_days"
     },
     {
-      "category": "SaaS Platforms",
-      "description": "B2B SaaS companies needing full-stack senior engineers",
-      "search_terms": ["saas senior full stack remote", "saas angular developer remote"],
-      "priority": "high"
-    },
-    {
-      "category": "AI/ML Product Companies",
-      "description": "Companies building AI-powered products needing senior engineers",
-      "search_terms": ["ai product senior engineer remote", "llm platform engineer remote"],
-      "priority": "high"
-    },
-    {
-      "category": "Developer Tools",
-      "description": "Companies building tools for developers",
-      "search_terms": ["developer tools senior engineer remote angular"],
-      "priority": "medium"
-    },
-    {
-      "category": "Remote-First Tech Companies",
-      "description": "Companies with established remote-first culture",
-      "search_terms": ["remote first senior full stack angular dotnet"],
-      "priority": "high"
+      "category": "Global Remote Automation Roles",
+      "search_queries": [
+        "n8n developer remote",
+        "ai automation engineer remote",
+        "workflow automation developer remote"
+      ],
+      "check_schedule": "every_2_days"
     }
   ],
-  "known_remote_friendly_companies": [
-    {
-      "name": "Automattic",
-      "careers_url": "https://automattic.com/work-with-us/",
-      "priority": "medium"
-    },
-    {
-      "name": "GitLab",
-      "careers_url": "https://about.gitlab.com/jobs/",
-      "priority": "medium"
-    },
-    {
-      "name": "Basecamp",
-      "careers_url": "https://basecamp.com/about/jobs",
-      "priority": "low"
-    },
-    {
-      "name": "Toptal",
-      "careers_url": "https://www.toptal.com/careers",
-      "priority": "medium",
-      "notes": "High-quality contract/freelance roles"
-    },
-    {
-      "name": "X-Team",
-      "careers_url": "https://x-team.com/join/",
-      "priority": "medium"
-    }
-  ],
-  "check_schedule": {
-    "priority_highest": "daily",
-    "priority_high": "every_2_days",
-    "priority_medium": "weekly",
-    "priority_low": "biweekly"
+  "special_rules": {
+    "n8n_gmbh": "Always check n8n GmbH first in every watchlist run. Flag any n8n role scoring >= 45 as HIGH PRIORITY regardless of score — add note 'n8n expert override' to the jobs table.",
+    "uae_advantage": "For UAE-based roles at any company, note Afsal's UAE residency as a competitive differentiator in the job record."
   }
 }

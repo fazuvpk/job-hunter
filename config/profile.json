@@ -1,180 +1,159 @@
 {
-  "personal": {
-    "name": "Fazil Kunhamed",
-    "email": "fazil.kunhamed@gmail.com",
-    "phone": "+917356634634",
-    "location": {
-      "city": "Kerala",
-      "country": "India",
-      "timezone": "Asia/Kolkata",
-      "utc_offset": "+05:30"
-    },
-    "linkedin": "https://www.linkedin.com/in/fazilkunhamed"
-  },
-  "career": {
-    "years_of_experience": 10,
-    "availability": "immediate",
-    "notice_period_days": 0,
-    "current_status": "Available",
-    "target_roles": [
-      "Senior Full Stack Developer",
-      "Angular Frontend Developer",
-      "Senior .NET Developer",
-      "Lead Full Stack Engineer",
-      "Solutions Architect"
-    ],
-    "seniority_level": "Senior"
-  },
-  "compensation": {
-    "salary_floor_usd_month": 4000,
-    "salary_target_usd_month": 5000,
-    "salary_ceiling_usd_month": 6000,
-    "currency_preference": "USD",
-    "negotiable": true,
-    "equity_interest": true,
-    "prefer_not_to_disclose_current": true
-  },
-  "work_preferences": {
-    "remote": "fully_remote",
-    "global": true,
-    "travel": {
-      "domestic_india": "weekly_ok",
-      "international": "depends_on_offer",
-      "avoid_countries": ["UAE", "United Arab Emirates"]
-    },
-    "relocation": false,
-    "preferred_contract_types": ["full_time", "contract", "consulting"]
-  },
-  "authorization": {
-    "citizenship": "Indian",
-    "work_authorization_india": true,
-    "open_to_visa_sponsorship": true,
-    "eligible_countries_without_sponsorship": ["India"],
-    "restricted_countries": ["UAE"]
+  "name": "Mohammed Afsal V P",
+  "email": "YOUR_EMAIL@gmail.com",
+  "phone": "+971XXXXXXXXX",
+  "location": "Abu Dhabi, UAE",
+  "linkedin": "https://www.linkedin.com/in/mohammed-afsal-v-p-2bb9b7249/",
+  "portfolio": "https://portfolio-plum-pi-62.vercel.app",
+  "github": "https://github.com/mohammadafsalvp",
+  "years_of_experience": 2,
+  "availability": "Immediate",
+  "work_authorization": "UAE Resident Visa holder — no sponsorship needed for UAE roles",
+  "travel": "Open to UAE travel; remote preferred",
+  "remote": "Open to UAE on-site, hybrid, or fully remote (global)",
+  "salary_floor_aed_month": 10000,
+  "salary_floor_usd_month": 2500,
+  "salary_target_aed_month": "10,000–15,000",
+  "salary_target_usd_month": "2,500–4,000",
+  "education": {
+    "degree": "B.Tech in Artificial Intelligence & Data Science",
+    "institution": "Anna University",
+    "cgpa": 7.56,
+    "graduation_year": 2024
   },
   "tech_stack": {
-    "backend": [
-      ".NET Core",
-      "ASP.NET MVC",
-      "ASP.NET Web API",
-      "Entity Framework",
-      "Entity Framework Core",
-      "Node.js",
-      "SQL Server",
-      "PostgreSQL",
-      "Redis"
-    ],
-    "frontend": [
-      "Angular 14",
-      "Angular 15",
-      "Angular 16",
-      "Angular 17",
-      "Angular 18",
-      "Angular 19",
-      "React",
-      "Vue",
-      "TypeScript",
-      "RxJS",
-      "JavaScript",
-      "ES2022",
-      "HTML5",
-      "CSS3",
-      "SCSS",
-      "GSAP",
-      "Three.js"
-    ],
-    "mobile": [
-      "Android",
-      "Kotlin",
-      "Java"
-    ],
-    "ai_automation": [
-      "Claude Code",
-      "OpenAI API",
-      "n8n",
-      "LangChain"
-    ],
-    "cloud": {
-      "aws": ["SES", "S3", "Kinesis", "Lambda", "EC2", "RDS"],
-      "azure": ["App Services", "Web Jobs", "Storage", "Event Grid", "Azure Functions", "Azure DevOps"]
-    },
-    "architecture": [
-      "Clean Architecture",
-      "CQRS",
-      "SOLID",
-      "Microservices",
-      "SignalR",
-      "Event-Driven Architecture",
-      "RESTful APIs",
-      "GraphQL"
-    ],
-    "tools": [
-      "Git",
-      "Docker",
-      "CI/CD",
-      "Playwright",
-      "xUnit",
-      "NUnit",
-      "Jasmine",
-      "Karma"
-    ]
+    "automation": ["n8n", "UiPath", "Power Automate", "Make", "Zapier"],
+    "ai_llm": ["LLM APIs (OpenAI, Azure OpenAI)", "Prompt Engineering", "RAG"],
+    "programming": ["Python", "SQL"],
+    "databases": ["Supabase (PostgreSQL)", "Firebase"],
+    "cloud": ["AWS (S3, Redshift, Lambda)", "Azure (Fundamentals, OpenAI)"],
+    "apis": ["REST", "JSON", "OAuth", "Webhooks"],
+    "bi": ["Power BI", "Tableau", "Excel"],
+    "data": ["ETL/ELT pipelines", "data ingestion", "data transformation"],
+    "rpa": ["UiPath (48.5hr Udemy cert + UiPath Academy Foundation cert)"],
+    "version_control": ["Git", "GitHub"]
   },
   "notable_achievements": [
     {
-      "project": "Oops AppLock",
-      "type": "consumer_mobile",
-      "highlights": [
-        "7.7 million+ downloads on Google Play",
-        "Featured on LifeHacker",
-        "Android app lock utility",
-        "Top-ranked in productivity category"
-      ],
-      "best_for_roles": ["mobile", "consumer_product", "startup", "android"]
+      "title": "AI Lead Qualification System",
+      "description": "n8n + Telegram + LLM (OpenAI/Gemini) + Supabase — auto-classifies leads Hot/Warm/Cold, 100% automated CRM entry + follow-up",
+      "impact": "100% automation of lead classification and follow-up"
     },
     {
-      "project": "Samsung SDS",
-      "type": "enterprise",
-      "highlights": [
-        "$45,000 USD revenue generated in 6 months",
-        "20% cloud infrastructure cost reduction",
-        "PII encryption of 20 million+ records completed in 3 minutes",
-        "Enterprise-scale data security implementation"
-      ],
-      "best_for_roles": ["enterprise", "backend", "cloud", "dotnet", "corporate"]
+      "title": "Automated Data Intelligence Pipeline",
+      "description": "14,000+ records processed end-to-end; n8n + Supabase + Quadratic AI",
+      "impact": "40% reduction in manual reporting effort"
     },
     {
-      "project": "ADNOC",
-      "type": "frontend_migration",
-      "highlights": [
-        "Angular 14 to Angular 19 full migration",
-        "55% bundle size reduction",
-        "33% API performance improvement",
-        "Large-scale enterprise frontend modernization"
-      ],
-      "best_for_roles": ["angular", "frontend", "migration", "performance"]
+      "title": "Customer Analytics on AWS",
+      "description": "100% automated data flow S3 → Lambda → Redshift; 14,000+ telecom records",
+      "impact": "Zero manual intervention in production pipeline"
     },
     {
-      "project": "Skill Tenet",
-      "type": "creative_frontend",
+      "title": "UiPath RPA — OCR Document Extraction",
+      "description": "OCR-based extraction from unstructured documents; eliminated human data entry errors",
+      "impact": "Eliminated human data entry errors"
+    },
+    {
+      "title": "Skill Tenet Conversation Engine",
+      "description": "LLM-driven multilingual recruitment automation + candidate repository (built with Fazil Kunhamed)",
+      "impact": "End-to-end recruitment automation with multilingual support"
+    },
+    {
+      "title": "Idempotent Order Processing",
+      "description": "Python stdlib only, air-gapped RHEL 9.4, SHA-256 audit trail, exponential backoff",
+      "impact": "Production-grade, zero-dependency reliability"
+    },
+    {
+      "title": "Research Publication",
+      "description": "AutoStream: Your All-in-One Data Science Assistant Using LLM — IJSREM Vol.09 Issue 04, April 2025",
+      "impact": "Peer-reviewed publication on LLM-powered data science tooling"
+    }
+  ],
+  "experience": [
+    {
+      "company": "RP2 India Pvt. Ltd.",
+      "title": "Data Analyst with BI",
+      "start": "2025-02",
+      "end": "2025-09",
       "highlights": [
-        "Three.js 3D interactive globe hero section",
-        "GSAP animation pipeline",
-        "Vite build system implementation",
-        "High-performance marketing site"
-      ],
-      "best_for_roles": ["frontend", "creative", "startup", "threedjs", "animation"]
+        "Built AWS pipelines (S3, Redshift, Lambda) processing 14,000+ records with 100% automation",
+        "Reduced manual reporting effort by 40% via n8n + Python automation",
+        "Delivered Power BI dashboards for real-time KPI monitoring"
+      ]
+    },
+    {
+      "company": "Adoavi",
+      "title": "Data Analyst",
+      "start": "2024-03",
+      "end": "2024-08",
+      "highlights": [
+        "Automated KPI workflows with Python + SQL",
+        "Built Power BI dashboards for business stakeholders"
+      ]
+    },
+    {
+      "company": "Skill Tenet International Services",
+      "title": "AI Automation Engineer (Project)",
+      "start": "2025-01",
+      "end": "2025-12",
+      "highlights": [
+        "Built LLM-driven multilingual conversation engine for recruitment automation",
+        "Developed n8n workflow pipelines for candidate repository management"
+      ]
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Applied AI Mastery",
+      "issuer": "IIT Madras (IITM Pravartak)",
+      "year": 2026
+    },
+    {
+      "name": "Complete UiPath RPA Developer (48.5 hrs)",
+      "issuer": "Udemy",
+      "year": 2026,
+      "month": "January"
+    },
+    {
+      "name": "RPA Developer Foundation",
+      "issuer": "UiPath Academy",
+      "year": 2026,
+      "month": "January"
+    },
+    {
+      "name": "Prompt Engineering",
+      "issuer": "Dubai Future Foundation",
+      "year": 2025,
+      "month": "October"
+    },
+    {
+      "name": "Data Analysis",
+      "issuer": "PrepInsta",
+      "year": 2025,
+      "month": "April"
     }
   ],
   "dream_companies": [
     {
-      "name": "AXI",
+      "name": "n8n GmbH",
       "priority": "highest",
-      "reason": "Top priority target"
+      "reason": "Core tool expert — built multiple production n8n systems"
+    },
+    {
+      "name": "UiPath",
+      "priority": "high",
+      "reason": "Certified UiPath developer with 48.5hr training"
+    },
+    {
+      "name": "Automation Anywhere",
+      "priority": "high",
+      "reason": "UAE/MENA market leader in RPA"
     }
   ],
   "company_preferences": {
-    "ideal": ["product_startup", "series_a_to_c", "tech_company", "saas", "fintech", "ai_company"],
-    "acceptable": ["enterprise_product", "consulting_with_products"],
-    "avoid": ["body_shopping_agency", "pure_staff_augmentation", "uae_based", "outdated_tech_only"]
+    "ideal_types": ["ai_product", "automation_platform", "saas", "uae_tech_startup"],
+    "preferred_stages": ["Series A", "Series B", "growth", "enterprise"],
+    "avoid": ["body_shopping", "staff_augmentation", "c2c_only"]
   }
 }
