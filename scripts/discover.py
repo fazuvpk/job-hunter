@@ -13,6 +13,12 @@ ROOT = Path(__file__).parent.parent
 DB_PATH = ROOT / "data" / "jobs.db"
 BLACKLIST_PATH = ROOT / "config" / "blacklist.json"
 SEARCH_PATH = ROOT / "config" / "search.json"
+SCORER_PATH = ROOT / "prompts" / "scorer.md"
+
+OLLAMA_BASE_URL = "http://100.110.228.115:11434"
+OLLAMA_MODEL = "hermes3:latest"
+OLLAMA_TIMEOUT = 300
+_OLLAMA_AVAILABLE = None
 
 def get_db():
     db = sqlite3.connect(str(DB_PATH))
@@ -50,6 +56,33 @@ def is_blacklisted(title, company, description, blacklist):
 def make_external_id(job_url, title, company):
     key = f"{job_url or ''}{title}{company}".encode()
     return hashlib.md5(key).hexdigest()
+
+def _check_ollama() -> bool:
+    global _OLLAMA_AVAILABLE
+    if _OLLAMA_AVAILABLE is not None:
+        return _OLLAMA_AVAILABLE
+    try:
+        import urllib.request
+        with urllib.request.urlopen(f"{OLLAMA_BASE_URL}/api/tags", timeout=4) as r:
+            _OLLAMA_AVAILABLE = r.status == 200
+    except Exception:
+        _OLLAMA_AVAILABLE = False
+    label = "Ollama rig-2060" if _OLLAMA_AVAILABLE else "Claude CLI (fallback)"
+    print(f"  [scorer] backend -> {label}", file=sys.stderr)
+    return _OLLAMA_AVAILABLE
+
+def _score_via_ollama(prompt: str) -> str:
+    import urllib.request
+    body = json.dumps({
+        "model": OLLAMA_MODEL, "prompt": prompt,
+        "stream": False, "options": {"temperature": 0.1, "num_predict": 300},
+    }).encode()
+    req = urllib.request.Request(
+        f"{OLLAMA_BASE_URL}/api/generate", data=body,
+        headers={"Content-Type": "application/json"}, method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=OLLAMA_TIMEOUT) as r:
+        return json.loads(r.read()).get("response", "")
 
 def salary_to_monthly_usd(min_amount, max_amount, currency, interval):
     """Rough conversion to monthly USD."""
@@ -98,63 +131,49 @@ def search_jobs(title, config):
         print(f"  ERROR searching '{title}': {e}")
         return None
 
-def score_job(job_data):
-    """Score a job using Claude API via subprocess to avoid import issues."""
-    import subprocess, json
+def score_job(job_data, scorer_prompt):
+    'Score a job via Ollama on rig-2060 (Tailscale); fall back to Claude CLI.'
+    import subprocess
+    parts = [
+        f"Title: {job_data.get('title', '')}",
+        f"Company: {job_data.get('company', '')}",
+        f"Location: {job_data.get('location', '')}",
+        f"Salary: {job_data.get('salary_raw') or 'Not stated'}",
+        f"Remote: {job_data.get('remote', 'Unknown')}",
+        f"Source: {job_data.get('source', '')}",
+        "Description:",
+        str(job_data.get('description', ''))[:3000],
+    ]
+    job_block = "\n".join(parts).strip()
+    prompt = (
+        scorer_prompt + "\n\n---\n## Job to Score\n" + job_block +
+        "\n\nReturn ONLY the JSON object described above. No markdown fences, no explanation."
+    )
 
-    prompt = f"""You are scoring a job for Fazil Kunhamed using the rubric below. Return ONLY valid JSON, no markdown.
-
-Job:
-- Title: {job_data.get('title', '')}
-- Company: {job_data.get('company', '')}
-- Location: {job_data.get('location', '')}
-- Salary: {job_data.get('salary_raw', 'Not stated')}
-- Remote: {job_data.get('remote', 'Unknown')}
-- Description: {str(job_data.get('description', ''))[:3000]}
-
-Scoring dimensions (return JSON with these exact keys):
-{{
-  "score": <0-100>,
-  "breakdown": {{
-    "role_match": <0-20>,
-    "tech_stack_overlap": <0-20>,
-    "remote_compatibility": <0-15>,
-    "seniority_alignment": <0-10>,
-    "salary_signal": <0-10>,
-    "company_quality": <0-10>,
-    "growth_opportunity": <0-5>,
-    "application_complexity": <0-5>,
-    "timezone_fit": <0-3>,
-    "visa_clarity": <0-2>
-  }},
-  "summary": "<2-3 sentence summary>",
-  "green_flags": ["<flag1>", "<flag2>"],
-  "red_flags": ["<flag1>"],
-  "recommendation": "<APPLY|REVIEW|SKIP|AUTO_SKIP>",
-  "confidence": "<high|medium|low>"
-}}
-
-Rules:
-- APPLY if score >= 80, REVIEW if 60-79, SKIP if 35-59, AUTO_SKIP if < 35
-- Score 0 + AUTO_SKIP for: UAE relocation, US citizens only, junior role, salary < $2000/month, security clearance
-- Candidate stack: Angular 14-19, .NET Core, TypeScript, Node.js, SQL Server, React, Azure, AWS
-- Must be fully remote (Kerala, India based)
-- Salary floor: $4000/month USD"""
+    if _check_ollama():
+        try:
+            out = _score_via_ollama(prompt)
+            m = re.search(r'\{[\s\S]*\}', out)
+            if m:
+                return json.loads(m.group())
+            print("    [scorer] Ollama no JSON - falling back", file=sys.stderr)
+        except Exception as e:
+            print(f"    [scorer] Ollama error: {e} - falling back", file=sys.stderr)
+            global _OLLAMA_AVAILABLE
+            _OLLAMA_AVAILABLE = False
 
     try:
-        result = subprocess.run(
-            ["claude", "-p", prompt, "--model", "claude-haiku-4-5-20251001"],
-            capture_output=True, text=True, timeout=30
+        r = subprocess.run(
+            ["claude", "-p", "-", "--model", "claude-haiku-4-5-20251001"],
+            input=prompt, capture_output=True, text=True, timeout=60,
         )
-        output = result.stdout.strip()
-        # Extract JSON from output
-        json_match = re.search(r'\{[\s\S]*\}', output)
-        if json_match:
-            return json.loads(json_match.group())
+        out = r.stdout.strip()
+        m = re.search(r'\{[\s\S]*\}', out)
+        if m:
+            return json.loads(m.group())
     except Exception as e:
-        print(f"    Score error: {e}")
+        print(f"    [scorer error] {e}", file=sys.stderr)
 
-    # Fallback: basic heuristic score
     return basic_score(job_data)
 
 def basic_score(job_data):
@@ -276,6 +295,7 @@ def main():
     config = load_config()
     blacklist = load_blacklist()
     db = get_db()
+    scorer_prompt = SCORER_PATH.read_text()
 
     titles = config["titles"]
     threshold_review = config["score_threshold_for_review"]
@@ -353,7 +373,7 @@ def main():
                 'source': source,
             }
 
-            scoring = score_job(job_data)
+            scoring = score_job(job_data, scorer_prompt)
             score = scoring.get('score', 0)
             recommendation = scoring.get('recommendation', 'SKIP')
             total_scored += 1
