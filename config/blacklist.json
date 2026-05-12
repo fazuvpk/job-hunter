@@ -15,13 +15,6 @@
       "active clearance"
     ],
     "description_patterns": [
-      "must be willing to relocate to UAE",
-      "relocation to Dubai required",
-      "based in Dubai",
-      "based in Abu Dhabi",
-      "Abu Dhabi office",
-      "Dubai office required",
-      "on-site in UAE",
       "US work authorization required",
       "must be located in US",
       "must reside in United States",
@@ -40,17 +33,10 @@
       "recruitment agency placing resources",
       "contract to hire only via agency"
     ],
-    "location_patterns": [
-      "Dubai, UAE",
-      "Abu Dhabi, UAE",
-      "United Arab Emirates",
-      "Sharjah, UAE",
-      "UAE only"
-    ]
+    "location_patterns": []
   },
   "score_overrides": {
     "instant_zero": [
-      "requires UAE relocation",
       "US citizens only",
       "salary below $2000/month",
       "on-site only no exceptions"
