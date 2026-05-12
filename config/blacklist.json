@@ -11,18 +11,29 @@
     "description_patterns": [
       "US citizens only",
       "must be located in the US",
+      "must be located in US",
+      "must reside in United States",
+      "no remote outside US",
       "W2 only",
+      "W2 only no C2C",
       "clearance required",
       "active security clearance",
+      "must have active US clearance",
       "must relocate to",
       "no remote work available",
-      "on-site required in [^UAE|Abu Dhabi|Dubai]"
+      "on-site required in [^UAE|Abu Dhabi|Dubai]",
+      "100% on-site mandatory"
     ],
     "company_patterns": [
       "body shopping",
       "staff augmentation firm",
-      "pure recruitment agency"
-    ]
+      "pure recruitment agency",
+      "consulting bench",
+      "talent acquisition firm only",
+      "recruitment agency placing resources",
+      "contract to hire only via agency"
+    ],
+    "location_patterns": []
   },
   "score_overrides": {
     "instant_zero": [
